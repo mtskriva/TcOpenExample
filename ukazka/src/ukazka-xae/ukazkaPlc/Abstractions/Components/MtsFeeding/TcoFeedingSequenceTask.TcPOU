@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="TcoFeedingSequenceTask" Id="{6a15bf14-7b1b-4cbd-8547-7cf38af9c488}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TcoFeedingSequenceTask EXTENDS TcoCore.TcoTask
+VAR
+	_sequence      : TcoCore.TcoSequence(THIS^, eRestoreMode.None);
+    _observerSequence       : TcoCore.TcoSequencerObserver(THIS^);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+]]></ST>
+    </Implementation>
+    <Property Name="Observer" Id="{9113932a-5f79-4cb8-913e-f1f163042dcd}">
+      <Declaration><![CDATA[PROPERTY PUBLIC Observer : REFERENCE TO TcoCore.TcoSequencerObserver
+]]></Declaration>
+      <Get Name="Get" Id="{2c81941f-30e5-4583-aacb-87ec3829c12b}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Observer ref=_observerSequence;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Restore" Id="{70622ba5-65b1-4df5-a40b-3f44610a5cf5}">
+      <Declaration><![CDATA[(*~
+	<docu>
+		<summary>
+			Restores this instance to the Ready state. Can be called explicitly or from within one of the restore mechanisms.
+			<para>
+				See also <see cref="PlcDocu.TcoCore.TcoTask.AutoRestorable()"/>
+			</para>
+		</summary>			
+	</docu>	
+~*)
+METHOD Restore : ITcoRestorable]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[SUPER^.Restore();
+_sequence.Restore();]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Sequence" Id="{94bbc59b-0664-426f-bfe4-95dc7aefb9fd}">
+      <Declaration><![CDATA[PROPERTY PUBLIC Sequence : REFERENCE TO TcoCore.TcoSequence
+]]></Declaration>
+      <Get Name="Get" Id="{ac4daf50-fcf1-445e-abd1-05fe37c35ab0}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Sequence ref=_sequence;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

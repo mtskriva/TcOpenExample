@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="CUTechnologicalDataBase" Id="{7f1b525b-56fa-09a1-1f2d-f6d3ae7fbaf7}">
+    <Declaration><![CDATA[{attribute clr [Container(Layout.Stack)]}
+{attribute clr [Group(Layout.Scroll)]}
+TYPE CUTechnologicalDataBase EXTENDS TcoCore.TcoStruct :
+STRUCT
+	{attribute wpf [Container(Layout.Stack,"General")]}
+	{attribute wpf [Group(Layout.GroupBox)]}
+	{attribute addProperty Name "<#Cycle time#> - <#Nominal#>"}
+	IdealCycleTime   : TIME;
+	
+	
+	{attribute addProperty Name "<#Cycle time#> - <#Warning#>"}
+	WarningCycleTime : TIME;
+    
+	{attribute addProperty Name "<#Cycle time#> - <#Error#>"}
+	ErrorCycleTime   : TIME;
+
+	
+	{attribute addProperty Name "<#Step time#> - <#Warning#>"}
+	WarningStepAlarmTime : TIME;
+    
+	{attribute addProperty Name "<#Step time#> - <#Error#>"}
+	ErrorStepAlarmTime   : TIME;
+	
+	{attribute addProperty Name "<#Energy saving mode - Inactivity time#>"}
+	TimeToEntryEnergySavingMode : TIME;
+	
+	
+	
+	(*~
+	<docu>
+		<summary>
+			The maximum allowed number of the any (arbitrary) recuring (consecutive)  failures.
+		</summary>			
+	</docu>	
+	~*)
+	{attribute addProperty Name "<#Max allowed number of any recurring failures (consecutive)#>"}
+	AnyRecurringFailure   : UINT;
+	
+	
+
+	(*~
+	<docu>
+		<summary>
+			The maximum allowed number of the same (identical) recuring (consecutive) failures. 
+		</summary>			
+	</docu>	
+	~*)
+	{attribute addProperty Name "<#Max allowed number of same recurring failures (consecutive)#>"}
+	SameRecurringFailure   : UINT;
+	
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

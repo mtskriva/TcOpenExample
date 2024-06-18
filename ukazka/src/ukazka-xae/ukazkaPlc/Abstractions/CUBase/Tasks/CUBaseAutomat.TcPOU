@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="CUBaseAutomat" Id="{f34497ee-0ea8-4948-9690-a8151302d35b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ABSTRACT CUBaseAutomat EXTENDS TcoTaskedSequencer
+VAR
+    _dialog : TcoCore.TcoDialog(THIS^);
+    _dialogCustomized : TcoCore.TcoCustomizedDialog(THIS^);
+    _dialogWithInput : TcoCore.TcoInputDialog(THIS^);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Folder Name="ConsecutiveFailures" Id="{c3dd5496-e25f-034d-3f6e-b4ffa5b188df}" />
+    <Folder Name="DataOperations" Id="{edf08b17-d837-0916-3b82-58653463e4f4}" />
+    <Method Name="DataEntityClose" Id="{a965833c-1ef6-025a-113f-9e8e9e5a762c}" FolderPath="DataOperations\">
+      <Declaration><![CDATA[(*~
+	<docu>
+		<summary>
+			Stores the data from this controlled unit into the repository. In addition modifies entity header and controlled unit header.									
+		</summary>
+	</docu>
+~*)
+METHOD DataEntityClose
+VAR_INPUT
+	(*~
+	<docu>
+		<summary>
+			The unique step id definition.
+		</summary>			
+	</docu>	
+	~*)
+	inStepID : INT;
+	(*~
+	<docu>
+		<summary>
+			If input enum is set to InvokeAndWaitDone  operation will  wait until task reaches the ```Done``` state .
+			If input enum is set to InvokeOnly results return True when  task reaches the ```Busy``` state . Later is recomended (neccessary) to check  task  ```Done``` state  , check  task  status.
+		</summary>			
+	</docu>	
+	~*)
+	InvokeAction: eDataEntityInvokeType;
+END_VAR
+VAR_IN_OUT
+	Header : CuHeader; 
+END_VAR
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (Step(inStepID,TRUE, 'CLOSE ENTITY DATA')) THEN
+    //-------------------------------------		
+	CASE InvokeAction OF
+		eDataEntityInvokeType.InvokeAndWaitDone: 
+				StepCompleteWhen(THIS^.StationBase.EntityFlowCloseForOperations(Header).Done);
+		eDataEntityInvokeType.InvokeOnly: 
+				StepCompleteWhen(THIS^.StationBase.EntityFlowCloseForOperations(Header).Busy);	
+	END_CASE;			   		    				
+    //-------------------------------------
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DataEntityCreateNew" Id="{578edfb1-f7ad-0177-16dd-4b737155d078}" FolderPath="DataOperations\">
+      <Declaration><![CDATA[(*~
+	<docu>
+		<summary>
+			Creates new record in the repository with given EntityId and populates with the current controlled units data.
+			In addition modifies entity header and controlled unit header.									
+		</summary>
+	</docu>
+~*)
+METHOD DataEntityCreateNew
+VAR_INPUT	
+	inStepID : INT;
+	EntityId : STRING(255);
+END_VAR
+
+VAR_IN_OUT
+	Header: CuHeader;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (Step(inStepID, TRUE, 'CREATE NEW ENTITY DATA')) THEN
+    //-------------------------------------		
+	StepCompleteWhen(THIS^.StationBase.EntityFlowCreateNew(EntityId, Header).Done);				   		    				
+    //-------------------------------------
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DataEntityDiscard" Id="{c4eb83a5-3a8b-087d-0081-05e9301586d8}" FolderPath="DataOperations\">
+      <Declaration><![CDATA[METHOD DataEntityDiscard
+VAR_INPUT	
+	inStepID : INT;
+	EntityId : STRING(255);
+END_VAR
+VAR_IN_OUT
+	Header: CuHeader;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (Step(inStepID, TRUE, 'DISCARD ENTITY DATA')) THEN
+    //-------------------------------------		
+	StepCompleteWhen(THIS^.StationBase.EntityFlowDiscard(EntityId, Header).Done);				   		    				
+    //-------------------------------------
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DataEntityFinalize" Id="{7ed02d1a-956c-0318-0f3a-a0fbfbe45243}" FolderPath="DataOperations\">
+      <Declaration><![CDATA[(*~
+	<docu>
+		<summary>
+			Stores data of this controlled unit into the repository.
+			In addition modifies entity header and controlled unit header.
+			Finalize will set the comprehensive result from InProgress to Passed. 
+			If the comprehensive result is Failed the finalizing will not modify the result.									
+		</summary>
+	</docu>
+~*)
+METHOD DataEntityFinalize : BOOL
+VAR_INPUT
+	(*~
+	<docu>
+		<summary>
+			The unique step id definition.
+		</summary>			
+	</docu>	
+	~*)
+	inStepID : INT;
+	(*~
+	<docu>
+		<summary>
+			If input enum is set to InvokeAndWaitDone  operation will  wait until task reaches the ```Done``` state .
+			If input enum is set to InvokeOnly results return True when  task reaches the ```Busy``` state . This option is used when we need to reduce cycle time. Later is recomended (neccessary) to check  task  ```Done``` state  , check  task  status.
+		</summary>			
+	</docu>	
+	~*)
+	InvokeAction: eDataEntityInvokeType;
+END_VAR
+VAR_IN_OUT
+	Header: CuHeader;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (Step(inStepID,TRUE, 'FINALIZE ENTITY DATA')) THEN
+    //-------------------------------------		
+		CASE InvokeAction OF
+		eDataEntityInvokeType.InvokeAndWaitDone: 
+				StepCompleteWhen(THIS^.StationBase.EntityFlowFinalize(Header).Done);
+		eDataEntityInvokeType.InvokeOnly: 
+				StepCompleteWhen(THIS^.StationBase.EntityFlowFinalize(Header).Busy);	
+	END_CASE;			   		    				
+	StepCompleteWhen(THIS^.StationBase.EntityFlowFinalize(Header).Done );				   		    				
+    //-------------------------------------
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DataEntityOpen" Id="{2a26fc17-3ba9-0135-1e70-03550eba748a}" FolderPath="DataOperations\">
+      <Declaration><![CDATA[(*~
+	<docu>
+		<summary>
+			Retrieves the data with given EntityId from the repository. In addition modifies entity header and controlled unit header.									
+		</summary>
+	</docu>
+~*)
+METHOD DataEntityOpen
+VAR_INPUT
+	(*~
+	<docu>
+		<summary>
+			The unique step id definition.
+		</summary>			
+	</docu>	
+	~*)
+	inStepID : INT;
+	(*~
+	<docu>
+		<summary>
+			The definition of jump sptep.Usage of this jump step is when entity does not belong to the Controled unit.
+		</summary>			
+	</docu>	
+	~*)
+	inReqStepId: INT;
+	inEntityId : STRING(255);
+END_VAR
+VAR_IN_OUT
+	CuHeader: CuHeader;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (Step(inStepID, TRUE, 'OPEN ENTITY DATA')) THEN
+    //-------------------------------------		
+    IF THIS^.StationBase.EntityFlowOpenForOperations(inEntityId, CuHeader).Done THEN
+        IF THIS^.StationBase.ProcessDataManager.Data.EntityHeader.IsEmpty THEN
+            RequestStep(inReqStepId);
+        ELSIF EntityDoesBelong() THEN
+            CompleteStep();
+        ELSE
+            RequestStep(inReqStepId);
+        END_IF
+    END_IF;
+    //-------------------------------------
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="EntityDoesBelong" Id="{b1bd5eea-f0ce-0a33-33aa-0ab8cd908959}" FolderPath="DataOperations\">
+      <Declaration><![CDATA[METHOD EntityDoesBelong : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[EntityDoesBelong:=THIS^.StationBase.ProcessDataManager.Data.EntityHeader.NextStation = THIS^.StationBase.CuId;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="HideAllDialogs" Id="{75efc24e-9984-4450-95c3-ea24b840e259}">
+      <Declaration><![CDATA[METHOD PUBLIC  HideAllDialogs
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_dialog.Restore();
+_dialogWithInput.Restore();
+_dialogCustomized.Restore();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MonitorAnyRecurringFailure" Id="{e0debd7d-76ba-040d-3b8f-a31d168a71a0}" FolderPath="ConsecutiveFailures\">
+      <Declaration><![CDATA[METHOD MonitorAnyRecurringFailure
+VAR_INPUT
+	(*~
+	<docu>
+		<summary>
+			The unique step id definition.
+		</summary>			
+	</docu>	
+	~*)
+	inStepID : INT;
+	(*~
+	<docu>
+		<summary>
+			The step enable condition.
+		</summary>			
+	</docu>	
+	~*)
+	inEnableStep :BOOL;
+	inResult : TcoComprehensiveResult;
+END_VAR
+
+
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (Step(inStepID,inEnableStep, 'MONITOR ANY RECURRING FAILURE IN SEQUENCE')) THEN
+    //-------------------------------------		
+	
+	IF(inResult.Result<>eOverallResult.Failed ) THEN
+		THIS^.StationBase.RecurringFails.AnyRecurringFails.Counter:=0;
+		THIS^.StationBase.RecurringFails.AnyRecurringFails.Reached :=FALSE;
+		This^.CompleteStep();
+	ELSE
+		//collect any recurring fails
+		IF NOT THIS^.StationBase.RecurringFails.AnyRecurringFails.Reached THEN 
+			THIS^.StationBase.RecurringFails.AnyRecurringFails.Counter := THIS^.StationBase.RecurringFails.AnyRecurringFails.Counter +1;
+		END_IF
+		THIS^.StationBase.RecurringFails.AnyRecurringFails.Reached:=THIS^.StationBase.RecurringFails.AnyRecurringFails.Counter>=THIS^.StationBase._settings.AnyRecurringFailure;
+		
+
+		
+	
+
+		
+		THIS^.Messenger.OnCondition(THIS^.StationBase.RecurringFails.AnyRecurringFails.Reached)
+									   .Build()
+									   .Append('(Consecutive failure) The number of any recurring failure count has been reached!')
+									   .Append(' Failure code: ')
+									   .Append(inResult.ErrorCodes)
+  									   .Append(' ')
+									   .Append(inResult.Failures)						
+									   .As()				   
+									   .AsError();
+									   
+		THIS^.StepCompleteWhen(NOT THIS^.StationBase.RecurringFails.AnyRecurringFails.Reached);			
+						   
+									   
+		IF THIS^.StationBase.RecurringFails.AnyRecurringFails.Reached THEN
+			
+				
+			IF(_dialog.Show()
+			   .WithCaption('<#(Consecutive failure) The number of any recurring failure count has been reached!#>')
+			   .WithText('<#Please acknowledge recurring failure!#>')
+			   .WithOk().Answer = TcoCore.eDialogAnswer.OK) THEN
+			   
+					THIS^.StationBase.RecurringFails.AnyRecurringFails.Counter:=0;
+					THIS^.StationBase.RecurringFails.AnyRecurringFails.Reached :=FALSE;
+					THIS^.CompleteStep();
+			END_IF; 
+		END_IF;
+	END_IF;
+	
+
+	
+	
+	
+ 		    				
+    //-------------------------------------
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MonitorSameRecurringFailure" Id="{37b40ebe-4b68-0404-1c7a-ac927368e921}" FolderPath="ConsecutiveFailures\">
+      <Declaration><![CDATA[METHOD MonitorSameRecurringFailure
+VAR_INPUT
+	(*~
+	<docu>
+		<summary>
+			The unique step id definition.
+		</summary>			
+	</docu>	
+	~*)
+	inStepID : INT;
+		(*~
+	<docu>
+		<summary>
+			The step enable condition.
+		</summary>			
+	</docu>	
+	~*)
+	inEnableStep :BOOL;
+	inResult : TcoComprehensiveResult;
+END_VAR
+
+
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (Step(inStepID,inEnableStep, 'MONITOR SAME RECURRING FAILURE IN SEQUENCE')) THEN
+    //-------------------------------------		
+	
+	IF(inResult.Result<>eOverallResult.Failed ) THEN
+		THIS^.StationBase.RecurringFails.SameRecurringFails.Counter:=0;
+		THIS^.StationBase.RecurringFails.SameRecurringFails.Reached :=FALSE;
+		THIS^.CompleteStep();
+	ELSE
+	
+		//collect same recurring
+		IF NOT THIS^.StationBase.RecurringFails.SameRecurringFails.Reached THEN 
+			IF THIS^.StationBase.RecurringFails.SameRecurringFails.Result.ErrorCodes = inResult.ErrorCodes AND inResult.ErrorCodes <>';' THEN //if error code not defined ignore
+				THIS^.StationBase.RecurringFails.SameRecurringFails.Counter := THIS^.StationBase.RecurringFails.SameRecurringFails.Counter +1;
+			END_IF;
+			THIS^.StationBase.RecurringFails.SameRecurringFails.Result.ErrorCodes := inResult.ErrorCodes ;
+		END_IF;
+		
+		THIS^.StationBase.RecurringFails.SameRecurringFails.Reached:=THIS^.StationBase.RecurringFails.SameRecurringFails.Counter>=THIS^.StationBase._settings.SameRecurringFailure;
+
+			
+		THIS^.Messenger.OnCondition(THIS^.StationBase.RecurringFails.SameRecurringFails.Reached)
+									   .Build()
+									   .Append('(Consecutive failure) The number of same recurring failure count has been reached!')
+									   .Append(' Failure code: ')
+									   .Append(inResult.ErrorCodes)
+  									   .Append(' ')
+									   .Append(inResult.Failures)									   									   
+									   .As()				   
+									   .AsError();
+		
+		THIS^.StepCompleteWhen(NOT THIS^.StationBase.RecurringFails.SameRecurringFails.Reached);
+	
+
+									   
+		IF THIS^.StationBase.RecurringFails.SameRecurringFails.Reached THEN
+			IF(_dialog.Show()
+			   .WithCaption('<#(Consecutive failure) The number of same recurring failure count has been reached!#>')
+			   .WithText('<#Please acknowledge recurring failure!#>')
+			   .WithOk().Answer = TcoCore.eDialogAnswer.Ok) THEN
+			   
+					THIS^.StationBase.RecurringFails.SameRecurringFails.Counter:=0;
+					THIS^.StationBase.RecurringFails.SameRecurringFails.Reached :=FALSE;
+					THIS^.CompleteStep();
+			END_IF; 
+		END_IF
+	END_IF;
+	
+
+	
+	
+	
+ 		    				
+    //-------------------------------------
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="StationBase" Id="{eaca3fe7-35ad-0454-21e6-545016e503be}">
+      <Declaration><![CDATA[PROPERTY StationBase : REFERENCE TO CuBase]]></Declaration>
+      <Get Name="Get" Id="{ade5c0ee-01dd-065a-2c38-d3659e28429b}">
+        <Declaration><![CDATA[VAR
+    _station : POINTER TO CUBase;
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF __QUERYPOINTER(Parent, _station) THEN // Check if _Parent is Station001
+    StationBase REF= _station^;              // If the check is successful dereference a pointer. simlar to THIS^ or SUPER^
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

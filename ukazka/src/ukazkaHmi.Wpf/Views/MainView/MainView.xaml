@@ -1,0 +1,59 @@
+<UserControl
+    x:Class="ukazkaHmi.Wpf.Views.MainView.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ukazkaHmi.Wpf.Views.MainView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vortex="http://vortex.mts/xaml" xmlns:ukazkaplc="clr-namespace:ukazkaPlc" xmlns:wpf="clr-namespace:ukazkaHmi.Wpf"
+    mc:Ignorable="d"
+
+    d:DesignHeight="450"
+    xmlns:p="clr-namespace:ukazkaHmi.Wpf.Properties" xmlns:vortexs="http://vortex.security.mts/xaml" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:MainViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" MinHeight="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Viewbox Grid.Row="0" Grid.RowSpan="1">
+            <ukazkaplc:NotificationPanelView  ModelObject="{Binding ukazkaPlc.MAIN._technology._notificationPanel}" />
+        </Viewbox>
+
+
+        <materialDesign:Card Grid.Row="1" Grid.ColumnSpan="2">
+            <WrapPanel>
+            <Menu 
+                materialDesign:MenuAssist.TopLevelMenuItemHeight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type materialDesign:Card}}, Path=ActualHeight}">
+
+                <MenuItem Header="{x:Static p:strings.LangSelector}" 
+                          Icon="{materialDesign:PackIcon Kind=Language}"
+                          Command="{Binding OpenLanguageCommand}"
+                          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+
+
+
+                <MenuItem Header="{x:Static p:strings.CloseApplication}" 
+                           Icon="{materialDesign:PackIcon Kind=ExitToApp}"
+                            Command="{Binding CloseApplicationCommand}"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                
+       
+      
+            </Menu>
+                <vortexs:UserInfoDisplayView Grid.Column="0" VerticalContentAlignment="Center" ></vortexs:UserInfoDisplayView>
+
+            </WrapPanel>
+        </materialDesign:Card>
+        <wpf:MenuControlView Grid.Column="1"/>
+    </Grid>
+</UserControl>

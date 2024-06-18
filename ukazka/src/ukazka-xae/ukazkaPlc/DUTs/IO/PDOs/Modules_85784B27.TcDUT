@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.2.0.0">
+  <DUT Name="Modules_85784B27" Id="{03ed0f96-96d8-41c2-846b-e88f6b523787}">
+    <Declaration><![CDATA[{attribute 'GeneratedUsingTerminal: AES-D-BC-ECAT Gen2-0001'}
+{attribute addProperty BoxType "AES-D-BC-ECAT Gen2-0001"}
+{attribute addProperty Id "InputsInputs_23559BB032OutputsOutputs_FC2FACAD32"}
+{attribute addProperty CRC "2239253287"}
+{attribute addProperty Size "64"}
+TYPE Modules_85784B27 :
+STRUCT
+	{attribute addProperty Name "Inputs"}
+	Inputs  : Inputs_23559BB0;
+	{attribute addProperty Name "Outputs"}
+	Outputs  : Outputs_FC2FACAD;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

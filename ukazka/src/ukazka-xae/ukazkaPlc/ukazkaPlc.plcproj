@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1f826822-78ef-46d2-b0c2-a803a090596d}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>false</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>ukazkaPlc</Name>
+    <ProgramVersion>3.1.4023.0</ProgramVersion>
+    <Application>{7b585f35-8188-4805-ba51-25c7145ab05c}</Application>
+    <TypeSystem>{97ee4bb6-0ac0-4f01-9c16-7d5b19852779}</TypeSystem>
+    <Implicit_Task_Info>{d4c69dfb-9cac-454d-88ad-908c0f851d1b}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{0a53b53a-8d69-4c5c-8c98-83157826349e}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{5b994ba1-a657-4a8d-a0cd-4b365d959321}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{6763eb25-e798-4795-b5ea-2d9f8d2217e4}</LibraryReferences>
+    <Company>TcOpen.MTS</Company>
+    <Released>false</Released>
+    <Title>ukazkaPlc</Title>
+    <ProjectVersion>0.6.0.913</ProjectVersion>
+    <DefaultNamespace>ukazkaPlc</DefaultNamespace>
+    <Placeholder>ukazkaPlc</Placeholder>
+    <CombineIds>false</CombineIds>
+    <PreserveCompiledLibComments>false</PreserveCompiledLibComments>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Abstractions\Components\ArrayRenderingExample\SampleArrayToRender.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\ArrayRenderingExample\SampleDataItem.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\MtsFeeding\TcoFeedingSequenceTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\MtsFeeding\TcoPlsPaletizator.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\MtsFeeding\TcoPlsPaletizator_Components.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\MtsFeeding\TcoPlsPaletizator_Config_v_1_x_x.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\MtsFeeding\TcoPlsPaletizator_Control_v_1_x_x.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\MtsFeeding\TcoPlsPaletizator_Status_v_1_x_x.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\WrappedComponent\WrappedComponentExample.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\WrappedComponent\WrappedComponentExample_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\WrappedComponent\WrappedComponentExample_Control.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\WrappedComponent\WrappedComponentExample_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Components\WrappedComponent\WrappedComponentsExample.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\CuBaseRecurringFail.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\CuBaseRecurringFailures.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\CUBase.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\CUBaseStatusInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\CUBaseSettings.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\CUComponentsBase.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Data\CuHeader.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Data\CUProcessDataBase.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Data\CUTechnologicalDataBase.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Data\eCUMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Data\eCUState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Data\eDataEntityInvokeType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Data\EntityHeader.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\ICUBase.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\ICUTask.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\OperatorInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\RemoteTasks\ProductionPlaner.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Tasks\CUBaseAutomat.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Tasks\CUBaseSuspend.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Tasks\CUBaseGround.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\CUBase\Tasks\CUBaseRecover.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Generic\NotificationPanel\NotificationPanel.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Generic\NotificationPanel\NotificationPanelInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlButtons\TcoControlButtons.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlButtons\ITcoControlButtons.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlButtons\TcoControledZone_Info.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlledZone\TcoControlledZoneActionTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlledZone\TcoControlledZone.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlledZone\TcoControlledZone_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlledZone\TcoControlledZone_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlVoltage\ITcoControlVoltage.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\ControlVoltage\TcoControlVoltage.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\DoorCircuit\TcoDoorCircuit_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\DoorCircuit\TcoDoorCircuit_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\DoorCircuit\TcoDoorCircuit.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\DoorCircuit\ITcoDoorCircuit.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\Doors\ITcoDoorLock.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\Doors\TcoStandardDoor.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\Doors\TcoBasicDoor.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\Estop\TcoEmergencyStop.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\KeyMode\TcoKeyMode_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\KeyMode\TcoKeyMode_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\KeyMode\TcoKeyMode.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\KeyMode\ITcoKeyMode.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\KeyNormalService\TcoKeyNormalService.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Safety\KeyNormalService\ITcoKeyNormalSevice.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\TcoCore\CycleTimeAnalitics.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\TcoCore\TcoInnerTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\TcoCore\TcoTaskedSequencer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\TcoCore\TcoTaskedService.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstractions\Technology\eStations.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Automat\CU00xAutomatParalell_1_Task.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Automat\CU00xAutomatTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Components\CU00xExamplesOfComponents.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Data\CU00xTechnologicalData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Data\CU00xDialogContent.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Ground\CU00xGroundTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Manual\CU00xManualTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Positions\CU00xTestMultiPositions.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Positions\Cu00xTestPositions.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Safety\Suspend\CU00xSuspendTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Safety\Recover\CU00xRecoverTask.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\Data\ProcessData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\Data\ProcessDataManager.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Components\CU00xComponents.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\CU00x.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\CU00x\Data\CU00xProcessData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\Data\TcoEntityBase.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\Data\TechnologicalDataManager.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\Data\TechnologyData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\Technology.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Technology\TechnologyComponents.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\PDOs\Device_State_F0482DC3.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\PDOs\Device_Control_6258066A.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\PDOs\Inputs_23559BB0.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\PDOs\Outputs_FC2FACAD.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\PDOs\Modules_85784B27.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\PDOs\Channel_830843C1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\PDOs\Channel_42CA91F7.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EK1200_013D0B49.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EK1122_1FC0878B.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\AES_510494FB.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EPP1322_1FC0878B.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EPP1809_32157CFD.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EPP1008_78E8D3DD.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EL1809_32157CFD.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EL2809_2B6483BD.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Boxes\EL9011_D65D3D32.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Devices\SyncUnitTasks_4BE01469.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Devices\SyncUnits_67D36DDA.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Topology\EK_E812B8FA.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Topology\EC_4E5C738F.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\Topology\EC_245FBB9A.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\GVL_iXlinker.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstractions" />
+    <Folder Include="Abstractions\Components\ArrayRenderingExample" />
+    <Folder Include="Abstractions\Components\MtsFeeding" />
+    <Folder Include="Abstractions\Components\WrappedComponent" />
+    <Folder Include="Abstractions\CUBase" />
+    <Folder Include="Abstractions\CUBase\Data" />
+    <Folder Include="Abstractions\CUBase\RemoteTasks" />
+    <Folder Include="Abstractions\CUBase\Tasks" />
+    <Folder Include="Abstractions\Generic" />
+    <Folder Include="Abstractions\Generic\NotificationPanel" />
+    <Folder Include="Abstractions\Components" />
+    <Folder Include="Abstractions\Safety" />
+    <Folder Include="Abstractions\Safety\ControlButtons" />
+    <Folder Include="Abstractions\Safety\ControlledZone" />
+    <Folder Include="Abstractions\Safety\DoorCircuit" />
+    <Folder Include="Abstractions\Safety\Estop" />
+    <Folder Include="Abstractions\Safety\Doors" />
+    <Folder Include="Abstractions\Safety\ControlVoltage" />
+    <Folder Include="Abstractions\Safety\KeyMode" />
+    <Folder Include="Abstractions\Safety\KeyNormalService" />
+    <Folder Include="Abstractions\Technology" />
+    <Folder Include="Abstractions\TcoCore" />
+    <Folder Include="DUTs" />
+    <Folder Include="Technology" />
+    <Folder Include="Technology\CU00x\Automat" />
+    <Folder Include="Technology\CU00x\Ground" />
+    <Folder Include="Technology\CU00x\Manual" />
+    <Folder Include="Technology\CU00x\Safety" />
+    <Folder Include="Technology\CU00x\Positions" />
+    <Folder Include="Technology\CU00x\Safety\Suspend" />
+    <Folder Include="Technology\CU00x\Safety\Recover" />
+    <Folder Include="Technology\Data" />
+    <Folder Include="Technology\CU00x" />
+    <Folder Include="Technology\CU00x\Components" />
+    <Folder Include="Technology\CU00x\Data" />
+    <Folder Include="GVLs" />
+    <Folder Include="DUTs\IO" />
+    <Folder Include="DUTs\IO\PdoEntries" />
+    <Folder Include="DUTs\IO\PDOs" />
+    <Folder Include="DUTs\IO\Boxes" />
+    <Folder Include="DUTs\IO\Devices" />
+    <Folder Include="DUTs\IO\Topology" />
+    <Folder Include="DUTs\IO\Base" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoAbbRobotics">
+      <DefaultResolution>TcoAbbRobotics, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoAbbRobotics</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoAbstractions">
+      <DefaultResolution>TcoAbstractions, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoAbstractions</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoAimTtiPowerSupply">
+      <DefaultResolution>TcoAimTtiPowerSupply, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoAimTtiPowerSupply</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoCognexVision">
+      <DefaultResolution>TcoCognexVision, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoCognexVision</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoCore">
+      <DefaultResolution>TcoCore, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoCore</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoData">
+      <DefaultResolution>TcoData, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoData</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoDrivesBeckhoff">
+      <DefaultResolution>TcoDrivesBeckhoff, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoDrivesBeckhoff</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoElements">
+      <DefaultResolution>TcoElements, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoElements</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoInspectors">
+      <DefaultResolution>TcoInspectors, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoInspectors</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoIo">
+      <DefaultResolution>TcoIo, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoIo</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoKukaRobotics">
+      <DefaultResolution>TcoKukaRobotics, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoKukaRobotics</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoMitsubishiRobotics">
+      <DefaultResolution>TcoMitsubishiRobotics, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoMitsubishiRobotics</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoPneumatics">
+      <DefaultResolution>TcoPneumatics, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoPneumatics</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoRexrothPress">
+      <DefaultResolution>TcoRexrothPress, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoRexrothPress</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoTixonFeeding">
+      <DefaultResolution>TcoTixonFeeding, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoTixonFeeding</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoUrRobotics">
+      <DefaultResolution>TcoUrRobotics, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoUrRobotics</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcoUtilities">
+      <DefaultResolution>TcoUtilities, 0.11.0.71 (Vortex.Library)</DefaultResolution>
+      <Namespace>TcoUtilities</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ukazkaPlc.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+        <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
+        <o>
+          <v n="Name">"{192FAD59-8248-4824-A8DE-9177C94C195A}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{29BD8D0C-3586-4548-BB48-497B9A01693F}</v>
+        <o>
+          <v n="Name">"{29BD8D0C-3586-4548-BB48-497B9A01693F}"</v>
+          <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+            <v>Rules</v>
+            <o>
+              <v n="Name">"Rules"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
+          </d>
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{40450F57-0AA3-4216-96F3-5444ECB29763}</v>
+        <o>
+          <v n="Name">"{40450F57-0AA3-4216-96F3-5444ECB29763}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="String">
+            <v>ActiveVisuProfile</v>
+            <v>IR0whWr8bwcQCAAAvtPOEQAAAACAAgAA+0n2LwAAAAABAAAAAAAAAAEaUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwACTHsAZgA5ADUAYgBiADQAMgA2AC0ANQA1ADIANAAtADQAYgA0ADUALQA5ADQAMAAwAC0AZgBiADAAZgAyAGUANwA3AGUANQAxAGIAfQADCE4AYQBtAGUABDBUAHcAaQBuAEMAQQBUACAAMwAuADEAIABCAHUAaQBsAGQAIAA0ADAAMgA2AC4ANAAFFlAAcgBvAGYAaQBsAGUARABhAHQAYQAGTHsAMQA2AGUANQA1AGIANgAwAC0ANwAwADQAMwAtADQAYQA2ADMALQBiADYANQBiAC0ANgAxADQANwAxADMAOAA3ADgAZAA0ADIAfQAHEkwAaQBiAHIAYQByAGkAZQBzAAhMewAzAGIAZgBkADUANAA1ADkALQBiADAANwBmAC0ANABkADYAZQAtAGEAZQAxAGEALQBhADgAMwAzADUANgBhADUANQAxADQAMgB9AAlMewA5AGMAOQA1ADgAOQA2ADgALQAyAGMAOAA1AC0ANAAxAGIAYgAtADgAOAA3ADEALQA4ADkANQBmAGYAMQBmAGUAZABlADEAYQB9AAoOVgBlAHIAcwBpAG8AbgALBmkAbgB0AAwKVQBzAGEAZwBlAA0KVABpAHQAbABlAA4aVgBpAHMAdQBFAGwAZQBtAE0AZQB0AGUAcgAPDkMAbwBtAHAAYQBuAHkAEAxTAHkAcwB0AGUAbQARElYAaQBzAHUARQBsAGUAbQBzABIwVgBpAHMAdQBFAGwAZQBtAHMAUwBwAGUAYwBpAGEAbABDAG8AbgB0AHIAbwBsAHMAEyhWAGkAcwB1AEUAbABlAG0AcwBXAGkAbgBDAG8AbgB0AHIAbwBsAHMAFCRWAGkAcwB1AEUAbABlAG0AVABlAHgAdABFAGQAaQB0AG8AcgAVHlYAaQBzAHUARQBsAGUAbQBYAFkAQwBoAGEAcgB0ABYiVgBpAHMAdQBOAGEAdABpAHYAZQBDAG8AbgB0AHIAbwBsABcUVgBpAHMAdQBJAG4AcAB1AHQAcwAYGFYAaQBzAHUARQBsAGUAbQBCAGEAcwBlABkmRABlAHYAUABsAGEAYwBlAGgAbwBsAGQAZQByAHMAVQBzAGUAZAAaCGIAbwBvAGwAGyJQAGwAdQBnAGkAbgBDAG8AbgBzAHQAcgBhAGkAbgB0AHMAHEx7ADQAMwBkADUAMgBiAGMAZQAtADkANAAyAGMALQA0ADQAZAA3AC0AOQBlADkANAAtADEAYgBmAGQAZgAzADEAMABlADYAMwBjAH0AHRxBAHQATABlAGEAcwB0AFYAZQByAHMAaQBvAG4AHhRQAGwAdQBnAGkAbgBHAHUAaQBkAB8WUwB5AHMAdABlAG0ALgBHAHUAaQBkACBIYQBmAGMAZAA1ADQANAA2AC0ANAA5ADEANAAtADQAZgBlADcALQBiAGIANwA4AC0AOQBiAGYAZgBlAGIANwAwAGYAZAAxADcAIRRVAHAAZABhAHQAZQBJAG4AZgBvACJMewBiADAAMwAzADYANgBhADgALQBiADUAYwAwAC0ANABiADkAYQAtAGEAMAAwAGUALQBlAGIAOAA2ADAAMQAxADEAMAA0AGMAMwB9ACMOVQBwAGQAYQB0AGUAcwAkTHsAMQA4ADYAOABmAGYAYwA5AC0AZQA0AGYAYwAtADQANQAzADIALQBhAGMAMAA2AC0AMQBlADMAOQBiAGIANQA1ADcAYgA2ADkAfQAlTHsAYQA1AGIAZAA0ADgAYwAzAC0AMABkADEANwAtADQAMQBiADUALQBiADEANgA0AC0ANQBmAGMANgBhAGQAMgBiADkANgBiADcAfQAmFk8AYgBqAGUAYwB0AHMAVAB5AHAAZQAnVFUAcABkAGEAdABlAEwAYQBuAGcAdQBhAGcAZQBNAG8AZABlAGwARgBvAHIAQwBvAG4AdgBlAHIAdABpAGIAbABlAEwAaQBiAHIAYQByAGkAZQBzACgQTABpAGIAVABpAHQAbABlACkUTABpAGIAQwBvAG0AcABhAG4AeQAqHlUAcABkAGEAdABlAFAAcgBvAHYAaQBkAGUAcgBzACs4UwB5AHMAdABlAG0ALgBDAG8AbABsAGUAYwB0AGkAbwBuAHMALgBIAGEAcwBoAHQAYQBiAGwAZQAsEnYAaQBzAHUAZQBsAGUAbQBzAC0McwB5AHMAdABlAG0ALkg2AGMAYgAxAGMAZABlADEALQBkADUAZABjAC0ANABhADMAYgAtADkAMAA1ADQALQAyADEAZgBhADcANQA2AGEAMwBmAGEANAAvKEkAbgB0AGUAcgBmAGEAYwBlAFYAZQByAHMAaQBvAG4ASQBuAGYAbwAwTHsAYwA2ADEAMQBlADQAMAAwAC0ANwBmAGIAOQAtADQAYwAzADUALQBiADkAYQBjAC0ANABlADMAMQA0AGIANQA5ADkANgA0ADMAfQAxGE0AYQBqAG8AcgBWAGUAcgBzAGkAbwBuADIYTQBpAG4AbwByAFYAZQByAHMAaQBvAG4AMwxMAGUAZwBhAGMAeQA0MEwAYQBuAGcAdQBhAGcAZQBNAG8AZABlAGwAVgBlAHIAcwBpAG8AbgBJAG4AZgBvADUwTABvAGEAZABMAGkAYgByAGEAcgBpAGUAcwBJAG4AdABvAFAAcgBvAGoAZQBjAHQANhpDAG8AbQBwAGEAdABpAGIAaQBsAGkAdAB5ANAAAhoD0AMBLQTQBQYaB9AHCBoBRQcJCdAACRoERQoLBAQAAAAFAAAAAAAAAAAAAADQDAutAgAAANANAS0O0A8BLRDQAAkaBEUKCwQEAAAABQAAAAAAAAAAAAAA0AwLrQEAAADQDQEtEdAPAS0Q0AAJGgRFCgsEBAAAAAUAAAAAAAAAAAAAANAMC60CAAAA0A0BLRLQDwEtENAACRoERQoLBAQAAAAFAAAAAAAAAAAAAADQDAutAgAAANANAS0T0A8BLRDQAAkaBEUKCwQEAAAABQAAAAAAAAAAAAAA0AwLrQIAAADQDQEtFNAPAS0Q0AAJGgRFCgsEBAAAAAUAAAAAAAAAAAAAANAMC60CAAAA0A0BLRXQDwEtENAACRoERQoLBAQAAAAFAAAAAAAAAAAAAADQDAutAgAAANANAS0W0A8BLRDQAAkaBEUKCwQEAAAABQAAAAAAAAAAAAAA0AwLrQIAAADQDQEtF9APAS0Q0AAJGgRFCgsEBAAAAAUAAAAAAAAAAAAAANAMC60EAAAA0A0BLRjQDwEtENAZGq0BRRscAdAAHBoCRR0LBAQAAAACAAAAAAAAAAAAAADQHh8tINAhIhoCRSMkAtAAJRoFRQoLBAMAAAADAAAAAAAAAAoAAADQJgutAAAAANADAS0n0CgBLRHQKQEtENAAJRoFRQoLBAMAAAADAAAAAAAAAAoAAADQJgutAQAAANADAS0n0CgBLRHQKQEtEJoqKwFFAAEC0AABLSzQAAEtLdAAHy0u0C8wGgPQMQutAQAAANAyC60jAAAA0DMarQDQNDAaA9AxC60CAAAA0DILrQYAAADQMxqtANA1Gq0A0DYarQA=</v>
+          </d>
+        </o>
+        <v>{8A0FB252-96EB-4DCC-A5B4-B4804D05E2D6}</v>
+        <o>
+          <v n="Name">"{8A0FB252-96EB-4DCC-A5B4-B4804D05E2D6}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="Boolean">
+            <v>WriteLineIDs</v>
+            <v>True</v>
+          </d>
+        </o>
+        <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
+        <o>
+          <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+      </d>
+      <d n="Values" t="Hashtable" />
+    </o>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

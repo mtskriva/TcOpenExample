@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.2.0.0">
+  <DUT Name="EC_4E5C738F" Id="{28bcb3a1-7a5f-4a95-a17a-b6b4a14f826f}">
+    <Declaration><![CDATA[{attribute 'GeneratedUsingTerminal: EK1200-1388-0000'}
+{attribute addProperty BoxType "EK1200-1388-0000"}
+{attribute addProperty Id "EKEK_E812B8FA154IA1EL1809_32157CFD20QA1EL2809_2B6483BD19Term_11_EL9011EL9011_D65D3D320"}
+{attribute addProperty CRC "1314681743"}
+{attribute addProperty Size "193"}
+{attribute addProperty Name "EC"}
+TYPE EC_4E5C738F EXTENDS EK1200_013D0B49 :
+STRUCT
+	{attribute addProperty Name "EK"}
+	{attribute addProperty PreviousPort "EC : B"}
+	{attribute addProperty SyncUnit "default"}
+	EK : EK_E812B8FA;
+	{attribute addProperty Name "IA1"}
+	{attribute addProperty PreviousPort "EK : C"}
+	{attribute addProperty SyncUnit "default"}
+	IA1 : EL1809_32157CFD;
+	{attribute addProperty Name "QA1"}
+	{attribute addProperty PreviousPort "IA1 : B"}
+	{attribute addProperty SyncUnit "default"}
+	QA1 : EL2809_2B6483BD;
+	{attribute addProperty Name "Term 11 (EL9011)"}
+	{attribute addProperty PreviousPort "QA1 : B"}
+	{attribute addProperty SyncUnit "default"}
+	Term_11_EL9011 : EL9011_D65D3D32;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

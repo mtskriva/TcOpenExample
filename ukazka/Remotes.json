@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "Name": "PLC",
+    "TargetUserName": "Administrator",
+    "TargetPass": "1",
+    "SourcePath": "src\\ukazkaHmi.Wpf\\bin\\Release\\net48",
+    "DestinationPath": "\\\\192.168.4.1\\hmi\\",
+    "SourcePathDocumentation": null,
+    "DestinationPathDocumentation": null,
+    "ExecutableFilePath": "C:\\HMI\\ukazkaHmi.Wpf.exe",
+    "ClearSharedFolder": false,
+    "Include": true,
+    "RunAfterUpload": true,
+    "Compression": 8
+  }
+]

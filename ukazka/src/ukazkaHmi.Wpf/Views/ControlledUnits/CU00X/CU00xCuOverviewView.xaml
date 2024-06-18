@@ -1,0 +1,53 @@
+<UserControl x:Class="ukazkaPlc.CU00xCuOverviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"        
+             xmlns:mainplc="clr-namespace:ukazkaPlc;assembly=ukazkaPlcConnector"
+             xmlns:local="clr-namespace:ukazkaPlc" xmlns:vortex="http://vortex.mts/xaml" xmlns:vortexs="http://vortex.security.mts/xaml" xmlns:ukazkainstructor="clr-namespace:ukazkaInstructor;assembly=ukazkaInstructor" xmlns:view="clr-namespace:ukazkaProductionPlaner.Planer.View;assembly=ukazkaProductionPlaner"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <d:UserControl.DataContext>
+        <mainplc:CU00x></mainplc:CU00x>
+    </d:UserControl.DataContext>
+    <Grid>
+        <TabControl Grid.Row="1" >
+          
+            <TabItem Header="STATION">
+                <!--<mainplc:CUBaseSpotView MinHeight="200"  DataContext="{Binding ukazkaPlc.MAIN._technology._cu00x, Mode=OneWay}"/>-->
+                <vortex:RenderableContentControl DataContext="{Binding  .,Mode=OneWay}" PresentationType="Spot"></vortex:RenderableContentControl>
+
+            </TabItem>
+            <TabItem Header="PLANER">
+                <UniformGrid  Rows="2">
+                    <vortex:RenderableContentControl DataContext="{Binding . ,Mode=OneWay}" PresentationType="InfoTasks"></vortex:RenderableContentControl>
+                    <view:ProductionPlanView Grid.Row="2" DataContext="{Binding ProductionPlanViewModel}"></view:ProductionPlanView>
+                </UniformGrid>
+
+            </TabItem>
+            <TabItem Header="INSTRUCTOR">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <ScrollViewer>
+
+                        <vortex:RenderableContentControl DataContext="{Binding . ,Mode=OneWay}" PresentationType="InfoTasks"></vortex:RenderableContentControl>
+                    </ScrollViewer>
+                    <vortexs:PermissionBox  Grid.Row="2"  Permissions="Administrator|instructor_access" SecurityMode="Disabled">
+                        <ukazkainstructor:InstructorView DataContext="{Binding InstructorViewModel}"></ukazkainstructor:InstructorView>
+                    </vortexs:PermissionBox>
+                </Grid>
+
+            </TabItem>
+          
+           
+
+           
+
+        </TabControl>
+
+    </Grid>
+</UserControl>

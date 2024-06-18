@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="CuHeader" Id="{1784ae53-3ad2-449b-8d1d-d2959ef4667d}">
+    <Declaration><![CDATA[TYPE CuHeader EXTENDS TcoCore.TcoStruct :
+STRUCT
+	{attribute addProperty Name "<#Next on Passed#>"}
+	NextOnPassed : eStations;
+	{attribute addProperty Name "<#Next on Failed#>"}
+	NextOnFailed : eStations;
+	{attribute clr [RenderIgnore("Control", "ShadowControl")]}
+	{attribute addProperty Name "<#Cycle time#>"}
+	CycleTime : TIME;
+	{attribute clr [RenderIgnore("Control", "ShadowControl")]}
+	{attribute addProperty Name "<#Clean loop time#>"}
+	CleanLoopTime : TIME;
+	{attribute clr [RenderIgnore("Control", "ShadowControl")]}
+	{attribute addProperty Name "<#Operation started#>"}
+	OperationsStarted : DT;
+	{attribute clr [RenderIgnore("Control", "ShadowControl")]}
+	{attribute addProperty Name "<#Operation ended#>"}
+	OperationsEnded : DT;	
+	{attribute clr [RenderIgnore("Control", "ShadowControl")]}
+	{attribute addProperty Name "<#Operator#>"}
+	Operator :STRING;	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

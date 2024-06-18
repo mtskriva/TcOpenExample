@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="EntityHeader" Id="{a65d1b87-5fe3-4e6b-b5aa-ebdc5c118dd6}">
+    <Declaration><![CDATA[{attribute wpf [Container(Layout.Stack)]}
+{attribute wpf [Group(Layout.Scroll)]}
+{attribute addProperty Name "<#Entity header#>"}
+TYPE
+    EntityHeader EXTENDS TcoCore.TcoStruct :
+    STRUCT
+        {attribute addProperty Name "<#Recipe#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        Recipe : STRING(255);
+        {attribute addProperty Name "<#Recipe created#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        RecipeCreated : DT;
+        {attribute addProperty Name "<#Recipe modified#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        RecipeLastModified : DT;
+        {attribute addProperty Name "<#Carrier#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        Carrier : STRING;
+        {attribute addProperty Name "<#Reset#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        WasReset : BOOL;
+        {attribute addProperty Name "<#Master#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        IsMaster : BOOL;
+        {attribute addProperty Name "<#Empty#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        IsEmpty : BOOL;
+        {attribute addProperty Name "<#Last station#>"}
+        LastStation : eStations;
+        {attribute addProperty Name "<#Next station#>"}
+        NextStation : eStations;
+        {attribute addProperty Name "<#Operations opened#>"}
+        OpenOn : eStations;
+        {attribute addProperty Name "<#Results#>"}
+        Results : TcoInspectors.TcoComprehensiveResult;
+
+        {attribute addProperty Name "<#Reworked#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+         WasReworked : BOOL;
+
+        {attribute addProperty Name "<#Last Rework Name#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+         LastReworkName : STRING;
+
+        {attribute addProperty Name "<#Rework Count#>"}
+        {attribute clr [RenderIgnore("Control", "ShadowControl")]}
+        ReworkCount : SINT;
+
+    END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,36 @@
+<UserControl x:Class="ukazkaHmi.Wpf.Views.Diagnostics.DiagnosticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"       
+             mc:Ignorable="d" 
+             xmlns:p="clr-namespace:ukazkaHmi.Wpf.Properties"
+             
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:vortex="http://vortex.mts/xaml" xmlns:diagnostics="clr-namespace:ukazkaHmi.Wpf.Views.Diagnostics" xmlns:wpf="clr-namespace:ukazkaHmi.Wpf">
+    <UserControl.DataContext>
+        <diagnostics:DiagnosticsViewModel></diagnostics:DiagnosticsViewModel>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <vortex:RenderContentConverter x:Key="RenderContentConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        
+        <TabControl>
+            <TabItem Header="{x:Static p:strings.Diagnostics}">
+                <vortex:RenderableContentControl DataContext="{Binding ukazkaPlc.MAIN._technology}" PresentationType="Diagnostics"></vortex:RenderableContentControl>
+            </TabItem>
+            <TabItem Header="{x:Static p:strings.IoTreeView}">
+                <ScrollViewer>
+                    <vortex:DynamicTreeView DataContext="{Binding ukazkaPlc.GVL_iXlinker}"></vortex:DynamicTreeView>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="{x:Static p:strings.Topology}">
+
+                <Button HorizontalAlignment="Center" Command="{Binding ShowTopologyCommand}" Content="{x:Static p:strings.ShowTopology}"></Button>
+   
+            </TabItem>
+          
+        </TabControl>
+    </Grid>
+</UserControl>

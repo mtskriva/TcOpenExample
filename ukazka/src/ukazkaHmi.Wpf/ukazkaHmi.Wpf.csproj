@@ -1,0 +1,153 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <IsPackable>false</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UserSecretsId>898a9847-9e04-4830-849d-662011ed5f2e</UserSecretsId>
+    
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+
+
+
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2365.46" />
+    <PackageReference Include="Serilog.Enrichers.EnrichedProperties" Version="1.0.63" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+    <PackageReference Include="Serilog.Sinks.MongoDB" Version="5.0.0" />
+    <PackageReference Include="RavenDB.Embedded" Version="5.3.102" />
+  </ItemGroup>
+
+	<!--PROJ-START
+  <ItemGroup>	
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoCore\src\TcoCore.Wpf\TcOpen.Inxton.TcoCore.Wpf.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoData\src\Wpf\TcoData.Wpf\TcOpen.Inxton.Data.Wpf.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoElements\src\Wpf\TcoElements.Wpf\TcOpen.Inxton.TcoElements.Wpf.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoInspectors\src\Wpf\TcOpen.Inxton.TcoInspectors.Wpf\TcOpen.Inxton.TcoInspectors.Wpf.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoPneumatics\src\TcoPneumatics.Wpf\TcOpen.Inxton.TcoPneumatics.Wpf.csproj" />    
+  </ItemGroup>
+	PROJ-END-->
+
+  <!--PCKG-START-->
+  <ItemGroup>
+    <PackageReference Include="TcOpen.Inxton.Data.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.Local.Security.Readers" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoAimTtiPowerSupply.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoCognexVision.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoCore.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoDrivesBeckhoff.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoElements.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoIo.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoPneumatics.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.Local.Security.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoInspectors.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoRexrothPress.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoAbbRobotics.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoMitsubishiRobotics.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoUrRobotics.Wpf" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.TcoKukaRobotics.Wpf" Version="0.11.0-alpha.71" />
+
+    <PackageReference Include="TcOpen.Inxton.TcoTixonFeeding.Wpf" Version="0.11.0-alpha.71" />
+
+  </ItemGroup>
+  <!--PCKG-END-->
+	
+ <ItemGroup>
+		<ProjectReference Include="..\ukazkaInstructor\ukazkaInstructor.csproj" />
+		<ProjectReference Include="..\ukazkaDataMerge\ukazkaDataMerge.csproj" />
+		<ProjectReference Include="..\ukazkaPlcConnector\ukazkaPlcConnector.csproj" />
+		<ProjectReference Include="..\ukazkaProductionPlaner\ukazkaProductionPlaner.csproj" />
+		<ProjectReference Include="..\ukazkaStatistic\ukazkaStatistic.csproj" />
+		<ProjectReference Include="..\ukazkaTagsDictionary\ukazkaTagsDictionary.csproj" />
+	
+ </ItemGroup>
+
+
+
+	<ItemGroup>
+		<Compile Update="Properties\NotificationPanel.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>NotificationPanel.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\strings.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>strings.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\NotificationPanel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationPanel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Components\ArrayRenderingExample\SampleArrayToRenderShadowDisplayView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Components\ArrayRenderingExample\SampleArrayToRenderServiceView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\ControlledUnits\Base\ControlledUnitBase\Tasks\CUBaseInfoDetailsTasksView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\ControlledUnits\Base\ControlledUnitBase\Tasks\CUBaseInfoTasksView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\ControlledUnits\Base\ControlledUnitSpotLite\Spot\CUBaseSpotLiteView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\DataTraceability\DataTraceabilityView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\Data\ReworkSettings\ReworkSettingsView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\Diagnostics\TopologyView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\ShutDown\ShutdownView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Splash\splash.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </SplashScreen>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\CulturalFlags\cz.png" />
+    <Resource Include="Assets\CulturalFlags\sk.png" />
+    <Resource Include="Assets\CulturalFlags\us.png" />
+ 
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+</Project>

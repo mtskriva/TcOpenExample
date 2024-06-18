@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.2.0.0">
+  <DUT Name="EK_E812B8FA" Id="{85c0ebbf-0381-4f37-adc9-c0d325520398}">
+    <Declaration><![CDATA[{attribute 'GeneratedUsingTerminal: EK1122-0000-0018'}
+{attribute addProperty BoxType "EK1122-0000-0018"}
+{attribute addProperty Id "PNEUAES_510494FB88ABEPP1322_1FC0878B2AB21EPP1809_32157CFD20AB22EPP1809_32157CFD20AB23EPP1008_78E8D3DD12AB24EPP1008_78E8D3DD12"}
+{attribute addProperty CRC "3893541114"}
+{attribute addProperty Size "154"}
+{attribute addProperty Name "EK"}
+TYPE EK_E812B8FA EXTENDS EK1122_1FC0878B :
+STRUCT
+	{attribute addProperty Name "PNEU"}
+	{attribute addProperty PreviousPort "EK : D"}
+	{attribute addProperty SyncUnit "default"}
+	PNEU : AES_510494FB;
+	{attribute addProperty Name "AB"}
+	{attribute addProperty PreviousPort "PNEU : B"}
+	{attribute addProperty SyncUnit "default"}
+	AB : EPP1322_1FC0878B;
+	{attribute addProperty Name "AB21"}
+	{attribute addProperty PreviousPort "AB : C"}
+	{attribute addProperty SyncUnit "default"}
+	AB21 : EPP1809_32157CFD;
+	{attribute addProperty Name "AB22"}
+	{attribute addProperty PreviousPort "AB21 : B"}
+	{attribute addProperty SyncUnit "default"}
+	AB22 : EPP1809_32157CFD;
+	{attribute addProperty Name "AB23"}
+	{attribute addProperty PreviousPort "AB22 : B"}
+	{attribute addProperty SyncUnit "default"}
+	AB23 : EPP1008_78E8D3DD;
+	{attribute addProperty Name "AB24"}
+	{attribute addProperty PreviousPort "AB23 : B"}
+	{attribute addProperty SyncUnit "default"}
+	AB24 : EPP1008_78E8D3DD;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="Technology" Id="{20d051ba-8e3a-4d8b-9fb7-71f6957f3a63}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Technology EXTENDS TcoCore.TcoContext
+VAR	
+    _processSettings     : ProcessDataManager(THIS^);  			//a.k.a receipe
+	_reworkSettings     : ProcessDataManager(THIS^);  			//a.k.a receipe for rework
+    _technologySettings  : TechnologicalDataManager(THIS^);		//a.k.a machine settings
+    _processTraceability : ProcessDataManager(THIS^);			//the same structure as process setting but filled with actual production data (measurements, inspection results, etc)
+	
+	
+	fbGetCurTaskIndex            : GETCURTASKINDEX;
+	_notificationPanel      : NotificationPanel(THIS^);				//provide technology state signals to side baner in visualisation
+    {attribute addProperty Name "<#AUTOMAT ALL#>"}
+    _automatAllTask : TcoCore.TcoTask(THIS^);					// Commmand-like taks to execute automation mode on whole technology. Handled in controlled units.
+    {attribute addProperty Name "<#GROUND ALL#>"}
+    _groundAllTask : TcoCore.TcoTask(THIS^);	
+
+	{attribute addProperty Name "<#_cu00x#>"}					
+    _cu00x         : CU00x(THIS^);
+	
+	{attribute addProperty Name "<#Technology Components#>"}	
+	_components : TechnologyComponents:= (Parent := THIS^);
+
+	{attribute addProperty Name "Device 1 (EtherCAT)"}
+	Device_1 : TcoIo.TcoEthercatMasterDevice(THIS^);
+	
+	_setDummyConditionsSuffisient:BOOL;
+	_dummyBlinker              : TcoUtilities.TcoBlinker(THIS^);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Folder Name="Initialize" Id="{759d33f3-fcf6-4559-9700-8095d2ab3e7e}" />
+    <Folder Name="Stations" Id="{f0ad222a-fb7f-4f66-a9ed-d5267740cf2e}" />
+    <Method Name="AllowAutomat" Id="{0aa54757-4c4d-0cde-13e5-b7414e695af4}">
+      <Declaration><![CDATA[METHOD AllowAutomat : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[AllowAutomat := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AllowGround" Id="{858f08f9-14d3-065d-1aa4-279cc3111ba4}">
+      <Declaration><![CDATA[METHOD AllowGround : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[AllowGround := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AllowManual" Id="{b0df765b-d61a-0a9e-2201-2c76ce14ddcf}">
+      <Declaration><![CDATA[METHOD AllowManual :  BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[AllowManual := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="AutomatAllTask" Id="{af39f865-7b9c-0790-2b3f-049d4170441c}">
+      <Declaration><![CDATA[PROPERTY AutomatAllTask : REFERENCE TO TcoCore.TcoTask]]></Declaration>
+      <Get Name="Get" Id="{8b138ea6-eaf2-064a-001d-c0652c900632}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[AutomatAllTask REF= _automatAllTask;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Cu00x" Id="{337711e9-b98b-42fe-9e42-55b23f91ea92}" FolderPath="Stations\">
+      <Declaration><![CDATA[PROPERTY PUBLIC Cu00x : Reference to CU00x]]></Declaration>
+      <Get Name="Get" Id="{d0dd6d4e-2ea5-49a8-a332-57a4e1943b42}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Cu00x REF=_cu00x;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="ForceStepMode" Id="{703a4ad0-e2bf-0a26-02d9-59b6c1ce971e}">
+      <Declaration><![CDATA[METHOD ForceStepMode : BOOL
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[ForceStepMode := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="GroundAllTask" Id="{517b8e00-2011-0b98-35b3-4181b5529b5d}">
+      <Declaration><![CDATA[PROPERTY GroundAllTask : REFERENCE TO TcoCore.TcoTask]]></Declaration>
+      <Get Name="Get" Id="{ac972d75-9264-065d-3fee-04e760569681}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[GroundAllTask REF= _groundAllTask;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="InitializeComponents" Id="{fc888b5c-689c-415f-91b8-3adb52477a53}" FolderPath="Initialize\">
+      <Declaration><![CDATA[METHOD InitializeComponents
+VAR_INPUT
+END_VAR
+
+VAR
+	controlVolage: BOOL;
+	controlVoltageDoor: BOOL;
+	estop: BOOL;
+	presure: BOOL;
+	locked: BOOL;
+	lock: BOOL;
+	opened: BOOL;
+	closed: BOOL;
+	
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[controlVolage:=FALSE;
+controlVoltageDoor:=FALSE;
+estop:=FALSE;
+presure:=FALSE;
+
+//_dummyBlinker(inOffTime := T#10000MS, inOnTime := T#10000MS);
+(*
+closed:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_8.Input;
+locked:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_9.Input;
+
+IF _setDummyConditionsSuffisient THEN
+	controlVolage:=TRUE;
+	controlVoltageDoor:=TRUE;
+	estop:=FALSE;
+	presure:=TRUE;
+
+
+END_IF;
+
+_components.ModeKey(inoKeyState1:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_1.Input ,
+					inoKeyState2:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_2.Input);
+					
+_components.NormalServiceKey(inoSignal:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_3.Input);
+					
+_components.ControlButtons(
+	inoButtonRecover:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_4.Input  , 
+	inoButtonSuspend:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_5.Input  , 
+	inoButtonGround:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_6.Input , 
+	inoButtonAuto:=GVL_iXlinker.EC1.EK1200.IA1_EL1809.Channel_7.Input, 
+	inoButtonRecoverLight:=GVL_iXlinker.EC1.EK1200.QA1_EL2809.Channel_1.Output  , 
+	inoButtonSuspendLight:=GVL_iXlinker.EC1.EK1200.QA1_EL2809.Channel_2.Output  , 
+	inoButtonGroundLight:=GVL_iXlinker.EC1.EK1200.QA1_EL2809.Channel_3.Output  , 
+	inoButtonAutoLight:= GVL_iXlinker.EC1.EK1200.QA1_EL2809.Channel_4.Output );
+	
+
+					
+
+_components.GlobalControlVoltage(inoSignal := controlVolage);
+
+_components.LocalControlVoltage(inoSignal := controlVolage);
+_components.LocalDoorVoltage(inoSignal := controlVoltageDoor);
+
+_components.EmergencyStop(inoSignal := estop);
+_components.AirPresureOk(inoSignal:= presure);
+
+
+_components.StandardDoor(inoIsLocked := locked,
+    inoIsOpen := opened,
+    inoLock :=lock);
+	
+	
+_components.BasicDoor(inoIsClosed := closed,
+     inoLock := lock);
+
+
+_components.DoorCicuit();
+
+_components.Zone(inDoorCircuit:=_components.DoorCicuit,
+				inEstopActive:=_components.EmergencyStop.Signal,
+				inAirPressureOK:= _components.AirPresureOk.Signal);
+		
+				
+_components.Zone.Service();
+*)]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="InitializeComponentsOnce" Id="{78fe5985-ea43-49bb-a2ff-319ea6fb4a1a}" FolderPath="Initialize\">
+      <Declaration><![CDATA[METHOD InitializeComponentsOnce
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_components.DoorCicuit.Restore();
+_components.Zone.Restore();
+
+
+
+_components.DoorCicuit.AddDoors(inDoor:=_components.StandardDoor);
+_components.DoorCicuit.AddDoors(inDoor:=_components.BasicDoor);
+_components.DoorCicuit.AddGlobalVoltage(inVoltage:=_components.GlobalControlVoltage);
+_components.DoorCicuit.AddLocalVoltage(inVoltage:=_components.LocalControlVoltage);
+_components.DoorCicuit.AddLocalDoorsVoltage(inVoltage:=_components.LocalDoorVoltage);
+
+
+_components.Zone.AddControlledUnit(inControlledUnit:=_cu00x);
+_components.Zone.AddControlButtons(inControlButtons:=_components.ControlButtons);
+_components.Zone.AddKeyMode(inKeyMode:=_components.ModeKey);
+_components.Zone.AddKeyNormalService(inKeyNormalService:=_components.NormalServiceKey);
+
+
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Main" Id="{d1d0e200-21d1-4642-b4c8-2fd801b60f39}">
+      <Declaration><![CDATA[(*~
+	<docu>
+		<summary>
+			Main method of the TcoContext. This is the entry point of any control logic that belongs to this context. 
+			The call of this method is ensured by calling the <c>InstanceName.Run()</c> method, and it must not be called explicitly.
+			This method is abstract, and it must be overridden in derived block.
+		</summary>
+	</docu>
+~*)
+METHOD PROTECTED Main
+VAR
+	_notificationSourceSignals: NotificationPanelInfo;
+	safetyCircuitOk: BOOL;
+	_eStopActive: BOOL;
+	_keysAto: BOOL;
+	_closed: BOOL;
+	_locked: BOOL;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[(*
+	Context settings 
+*)
+
+// RTC Synchronisation
+THIS^.RtcSynchronize(TRUE,  
+					 '192.168.4.1.1.1',    // Provide AMS ID of the time source, leave blank if local. 
+					 60);
+
+// Messenger logger settings
+_settings.Messaging.MessageDigestMethod := eMessageDigestMethod.CRC32;
+_settings.Messaging.MessengerLoggingMethod := eMessengerLogMethod.OnEventRisen;
+
+
+_components.DoorCicuit.Config.MaxDoors:=12;
+_components.DoorCicuit.Config.MaxGlobalVoltage:=2;
+_components.DoorCicuit.Config.MaxLocalVoltage:=2;
+_components.DoorCicuit.Config.MaxLocalDoorsVoltage:=2;
+
+
+_components.Zone.Config.MaxControlButtons:=2;
+_components.Zone.Config.MaxControledUnits:=10;
+_components.Zone.Config.MaxKeyMode:=2;
+_components.Zone.Config.MaxKeyNormalService:=2;
+
+
+
+THIS^.InitializeComponents();
+fbGetCurTaskIndex();
+IF _TaskInfo[fbGetCurTaskIndex.index].FirstCycle THEN
+    // The code that you want to be executed at the first cycle of  PLC only 
+	THIS^.InitializeComponentsOnce();
+END_IF
+
+//notification panel
+ Context.Environment.Messaging.Suspend();
+			
+_closed:=TRUE;
+//_closed   := 	Components.Safety.DoorCircuits.DoorCircuit_2.IsClosed 
+//			AND Components.Safety.DoorCircuits.DoorCircuit_3.IsClosed  
+//			AND Components.Safety.DoorCircuits.DoorCircuit_4.IsClosed  
+//			AND Components.Safety.DoorCircuits.DoorCircuit_5.IsClosed  
+//			AND Components.Safety.DoorCircuits.DoorCircuit_6.IsClosed;
+
+ _locked:=TRUE;
+//_locked   := 	Components.Safety.DoorCircuits.DoorCircuit_2.IsLocked 
+//			AND Components.Safety.DoorCircuits.DoorCircuit_3.IsLocked  
+//			AND Components.Safety.DoorCircuits.DoorCircuit_4.IsLocked  
+//			AND Components.Safety.DoorCircuits.DoorCircuit_5.IsLocked  
+//			AND Components.Safety.DoorCircuits.DoorCircuit_6.IsLocked;
+			
+_keysAto  := TRUE;
+_eStopActive:=0;
+
+
+_notificationSourceSignals.ControlVoltage   := TRUE;//Components.ControlVoltage.Signal.Signal 
+_notificationSourceSignals.AirPressure      := TRUE;//Components.AirPressureOk.Signal.Signal, 
+_notificationSourceSignals.AutomatAllowed   := _keysAto; 
+_notificationSourceSignals.EmergencyStop    := _eStopActive > 0; 
+_notificationSourceSignals.SafetyDoorOk     :=safetyCircuitOk;	
+_notificationSourceSignals.LightCurtain     := TRUE; 	// not used
+_notificationSourceSignals.DoorClosed       := _closed; 
+_notificationSourceSignals.DoorLocked       := _locked; 
+_notificationSourceSignals.ProcessDataOk    := _processSettings._data._EntityId <> '';
+_notificationSourceSignals.TechnologyDataOk := _technologySettings._data._EntityId <> '';  
+	
+_notificationPanel(inBlinkPeriod:=T#500MS , inSignalSource:=_notificationSourceSignals );
+			
+ Context.Environment.Messaging.Resume();
+
+(*
+	
+	Data managers
+
+*)
+
+_processSettings();
+_reworkSettings();
+_technologySettings();
+
+(*
+
+	Controlled units
+	
+*)
+
+_cu00x();
+
+
+_automatAllTask();
+_groundAllTask();
+
+//Device_1(	SyncUnits		:= ADR(		GVL_iXlinker.EC1.SyncUnits),
+//			SyncUnitsSize	:= SIZEOF(	GVL_iXlinker.EC1.SyncUnits),
+//			Inputs			:=			GVL_iXlinker.EC1.Inputs,
+//			InfoData		:=			GVL_iXlinker.EC1.InfoData);	]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OnExit" Id="{29dbb73f-9a28-0fe3-31dc-e1185889822b}">
+      <Declaration><![CDATA[
+(*~
+	<docu>
+		<summary>
+			Called upon exit from the context. When overridden in derived class allows to execute an arbitrary logic after closing the context cycle.	
+		</summary>			
+	</docu>	
+~*)METHOD PROTECTED OnExit
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_automatAllTask.DoneWhen(TRUE);
+_groundAllTask.DoneWhen(TRUE);]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="ProcessSettings" Id="{5f876a71-a280-42cf-9f33-fc8ef671f9a2}">
+      <Declaration><![CDATA[PROPERTY ProcessSettings : REFERENCE TO ProcessDataManager]]></Declaration>
+      <Get Name="Get" Id="{4cb3435a-d869-4802-9d86-6466a1c918f7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ProcessSettings REF= _processSettings;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="ReworkSettings" Id="{528fd7af-46d1-4d39-bd6c-409cd291d5e4}">
+      <Declaration><![CDATA[PROPERTY ReworkSettings : REFERENCE TO ProcessDataManager]]></Declaration>
+      <Get Name="Get" Id="{06451fe5-80c7-49ba-aaf0-64ccfb487bca}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ReworkSettings REF= _reworkSettings;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="TechnologicalSettings" Id="{c5ffbe54-7294-04ed-3bd7-73d2651f9af8}">
+      <Declaration><![CDATA[PROPERTY TechnologicalSettings : REFERENCE TO TechnologicalDataManager]]></Declaration>
+      <Get Name="Get" Id="{7029ad92-6154-0241-2993-9cb7de1fadac}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TechnologicalSettings REF= _technologySettings;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="Technology">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.AllowAutomat">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.AllowGround">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.AllowManual">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.AutomatAllTask.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.Cu00x.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.ForceStepMode">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.GroundAllTask.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.InitializeComponents">
+      <LineId Id="3" Count="62" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.InitializeComponentsOnce">
+      <LineId Id="3" Count="18" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.Main">
+      <LineId Id="3" Count="94" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.OnExit">
+      <LineId Id="3" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.ProcessSettings.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.ReworkSettings.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Technology.TechnologicalSettings.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

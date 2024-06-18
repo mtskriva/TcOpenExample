@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="CU00xComponents" Id="{4e1b0472-1d17-48ba-b026-d0be267cd4f2}">
+    <Declaration><![CDATA[{attribute wpf [Container(Layout.Tabs)]}
+TYPE
+    CU00xComponents EXTENDS CUComponentsBase :
+    STRUCT
+
+		{attribute wpf [Container(Layout.Stack,"VSTUPY")]}	
+		{attribute wpf [Group(Layout.Scroll)]}
+		{attribute addProperty Name "Vstup 1"}   
+		IN1 : TcoElements.TcoDi(THISSTRUCT);
+		{attribute addProperty Name "Vstup 2"}  
+		IN2 : TcoElements.TcoDi(THISSTRUCT);
+		{attribute addProperty Name "Vstup 3"}  
+		IN3 : TcoElements.TcoDi(THISSTRUCT);
+		
+		{attribute wpf [Container(Layout.Stack,"VÝSTUPY")]}	
+		{attribute wpf [Group(Layout.Scroll)]}
+		{attribute addProperty Name "Výstup 1"}   
+		OUT1 : TcoElements.TcoDo(THISSTRUCT);
+		{attribute addProperty Name "Výstup 2"}   
+		OUT2 : TcoElements.TcoDo(THISSTRUCT);
+		{attribute addProperty Name "Výstup 3"}   
+		OUT3 : TcoElements.TcoDo(THISSTRUCT);
+
+
+		{attribute wpf [Container(Layout.Stack,"PNEUMATIKA")]}	
+		{attribute wpf [Group(Layout.Scroll)]}
+		
+		{attribute addProperty Name "Vertikálny piest"}                  
+		{attribute addProperty _moveHomeDefaultName "<#MOVE DOWN#>"}    
+		{attribute addProperty _moveWorkDefaultName "<#MOVE UP#>"} 
+		{attribute addProperty _stopDefaultName "<#STOP#>"}             
+		VerticalPiston : TcoPneumatics.TcoCylinder(THISSTRUCT);
+		
+		
+		{attribute addProperty Name "Horizontálny piest"}                  
+		{attribute addProperty _moveHomeDefaultName "<#MOVE DOWN#>"}    
+		{attribute addProperty _moveWorkDefaultName "<#MOVE UP#>"} 
+		{attribute addProperty _stopDefaultName "<#STOP#>"}             
+		HorizontalPiston : TcoPneumatics.TcoCylinder(THISSTRUCT);
+		
+		{attribute addProperty Name "Dvojitý piest"}                  
+		{attribute addProperty _moveHomeDefaultName "<#MOVE DOWN#>"}    
+		{attribute addProperty _moveWorkDefaultName "<#MOVE UP#>"} 
+		{attribute addProperty _stopDefaultName "<#STOP#>"}             
+		DoublePiston : TcoPneumatics.TcoDoubleCylinder(THISSTRUCT);
+		
+	
+
+		{attribute wpf [Container(Layout.Stack,"VISION")]}	
+		{attribute wpf [Group(Layout.Scroll)]}
+		{attribute addProperty Name "Dataman"}
+     	Dmc : TcoCognexVision.TcoDataman_v_5_x_x(THISSTRUCT);
+
+		{attribute wpf [Container(Layout.Stack,"ROBOTIKA")]}	
+		{attribute wpf [Group(Layout.Scroll)]}
+		{attribute addProperty Name "Abb IRC 5"}
+     	AbbIrc5 : TcoAbbRobotics.TcoIrc5_v_1_x_x(THISSTRUCT);
+
+		
+
+    END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

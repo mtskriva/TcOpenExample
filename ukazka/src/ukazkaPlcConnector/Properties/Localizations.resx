@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="___Config__" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="___Status__" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="___Control__" xml:space="preserve">
+    <value>Control</value>
+  </data>
+  <data name="___Components__" xml:space="preserve">
+    <value>Components</value>
+  </data>
+  <data name="___Poziadavka_novy_blister__" xml:space="preserve">
+    <value>Poziadavka novy blister</value>
+  </data>
+  <data name="___Poziadavka_vylozenie_blistera__" xml:space="preserve">
+    <value>Poziadavka vylozenie blistera</value>
+  </data>
+  <data name="___Poziadavka_obsluhy_vystupny_buffer__" xml:space="preserve">
+    <value>Poziadavka obsluhy vystupny buffer</value>
+  </data>
+  <data name="___Restore__" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="___CAKANIE_NA_OBSLUHU_PALETIZERA___ZAVRITE_DVERE___" xml:space="preserve">
+    <value>CAKANIE NA OBSLUHU PALETIZERA - ZAVRITE DVERE!</value>
+  </data>
+  <data name="___INIT__" xml:space="preserve">
+    <value>INIT</value>
+  </data>
+  <data name="___BEZPECNOST_ZARIADENIA_NARUSENA__NIEJE_MOZNE_VYKONAT_AKCIU__" xml:space="preserve">
+    <value>BEZPECNOST ZARIADENIA NARUSENA. NIEJE MOZNE VYKONAT AKCIU</value>
+  </data>
+  <data name="___KONTROLA_POCTU_VSTUPNYCH_BLISTROV__" xml:space="preserve">
+    <value>KONTROLA POCTU VSTUPNYCH BLISTROV</value>
+  </data>
+  <data name="___PODAVAC_PRAZDNY__DOPLNE_VSTUPNE_BLISTRE____" xml:space="preserve">
+    <value>PODAVAC PRAZDNY! DOPLNE VSTUPNE BLISTRE !</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___VERTIKALNE_VALCE_VYSUNUTE__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - VERTIKALNE VALCE VYSUNUTE</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___SEPAROVANIE_ZASUNUTE__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - SEPAROVANIE ZASUNUTE</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___VERTIKALNE_VALCE_ZASUNUT_JEDEN__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - VERTIKALNE VALCE ZASUNUT JEDEN</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___SEPAROVANIE_VYSUNUTE__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - SEPAROVANIE VYSUNUTE</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___VERTIKALNE_VALCE_ZASUNUT_OBIDVA__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - VERTIKALNE VALCE ZASUNUT OBIDVA</value>
+  </data>
+  <data name="___KONTROLA_PRITOMNOSTI_SEPAROVANEHO_KUSU__" xml:space="preserve">
+    <value>KONTROLA PRITOMNOSTI SEPAROVANEHO KUSU</value>
+  </data>
+  <data name="___PODAVAC_PRAZDNY__DOPLNE_BLISTRE____" xml:space="preserve">
+    <value>PODAVAC PRAZDNY! DOPLNE BLISTRE !</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___PRESUNUTIE_BLISTRA_DO_POZICIE_ODOBERANIA__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - PRESUNUTIE BLISTRA DO POZICIE ODOBERANIA</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___UPEVENIE_BLISTRA_ZBOKU__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - UPEVENIE BLISTRA ZBOKU</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___NPRESUNUTIE_BLISTRA_DO_POZICIE_NABERANIA__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - NPRESUNUTIE BLISTRA DO POZICIE NABERANIA</value>
+  </data>
+  <data name="___SEPAROVANIE_VSTUPNEHO_BLISTRA___ZASUNUTE_P4__" xml:space="preserve">
+    <value>SEPAROVANIE VSTUPNEHO BLISTRA - ZASUNUTE P4</value>
+  </data>
+  <data name="___SEPAROVANIE_VYSTUPNEHO_BLISTRA___UVOLNENIE_BLISTRA__" xml:space="preserve">
+    <value>SEPAROVANIE VYSTUPNEHO BLISTRA - UVOLNENIE BLISTRA</value>
+  </data>
+  <data name="___SEPAROVANIE_VYSTUPNEHO_BLISTRA___ZASUNUTIE_SUPPORTU__" xml:space="preserve">
+    <value>SEPAROVANIE VYSTUPNEHO BLISTRA - ZASUNUTIE SUPPORTU</value>
+  </data>
+  <data name="___SEPAROVANIE_VYSTUPNEHO_BLISTRA___KONTROLA_PRITOMNOSTI_BLISTA_NA_SKLZE__" xml:space="preserve">
+    <value>SEPAROVANIE VYSTUPNEHO BLISTRA - KONTROLA PRITOMNOSTI BLISTA NA SKLZE</value>
+  </data>
+  <data name="___VYSTUPNY_BUFFER___KONTROLA_PRITOMNOSTI_BLISTA_NAD_BUFFEROM__" xml:space="preserve">
+    <value>VYSTUPNY BUFFER - KONTROLA PRITOMNOSTI BLISTA NAD BUFFEROM</value>
+  </data>
+  <data name="___VYSTUPNY_BUFFER___KONTROLA_POSCTU_BLISTROV__" xml:space="preserve">
+    <value>VYSTUPNY BUFFER - KONTROLA POSCTU BLISTROV</value>
+  </data>
+  <data name="___PODAVAC_PLNY__ODSTRANTE_PRAZDNE_BLISTRE____" xml:space="preserve">
+    <value>PODAVAC PLNY! ODSTRANTE PRAZDNE BLISTRE !</value>
+  </data>
+  <data name="___VYSTUPNY_BUFFER___POSUN_KUSOV_NAD_BUFFER__" xml:space="preserve">
+    <value>VYSTUPNY BUFFER - POSUN KUSOV NAD BUFFER</value>
+  </data>
+  <data name="___VYSTUPNY_BUFFER___UVOLNENIE_BLISTRA_A_NAVRAT_NAHOR__" xml:space="preserve">
+    <value>VYSTUPNY BUFFER - UVOLNENIE BLISTRA A NAVRAT NAHOR</value>
+  </data>
+  <data name="___VYSTUPNY_BUFFER___HORIZONTALNE_ZASUNUTIE__" xml:space="preserve">
+    <value>VYSTUPNY BUFFER - HORIZONTALNE ZASUNUTIE</value>
+  </data>
+  <data name="___STATUS_INFO__" xml:space="preserve">
+    <value>STATUS INFO</value>
+  </data>
+  <data name="___AUTOMAT__" xml:space="preserve">
+    <value>AUTOMAT</value>
+  </data>
+  <data name="___GROUND__" xml:space="preserve">
+    <value>GROUND</value>
+  </data>
+  <data name="___MANUAL__" xml:space="preserve">
+    <value>MANUAL</value>
+  </data>
+  <data name="___READY_TO_START__" xml:space="preserve">
+    <value>READY TO START</value>
+  </data>
+  <data name="___IDLE__" xml:space="preserve">
+    <value>IDLE</value>
+  </data>
+  <data name="____Consecutive_failure__The_number_of_any_recurring_failure_count_has_been_reached___" xml:space="preserve">
+    <value>(Consecutive failure) The number of any recurring failure count has been reached!</value>
+  </data>
+  <data name="___Please_acknowledge_recurring_failure___" xml:space="preserve">
+    <value>Please acknowledge recurring failure!</value>
+  </data>
+  <data name="____Consecutive_failure__The_number_of_same_recurring_failure_count_has_been_reached___" xml:space="preserve">
+    <value>(Consecutive failure) The number of same recurring failure count has been reached!</value>
+  </data>
+  <data name="___Heart_beat__" xml:space="preserve">
+    <value>Heart beat</value>
+  </data>
+  <data name="___ButtonRecover__" xml:space="preserve">
+    <value>ButtonRecover</value>
+  </data>
+  <data name="___ButtonSuspend__" xml:space="preserve">
+    <value>ButtonSuspend</value>
+  </data>
+  <data name="___ButtonGround__" xml:space="preserve">
+    <value>ButtonGround</value>
+  </data>
+  <data name="___ButtonAuto__" xml:space="preserve">
+    <value>ButtonAuto</value>
+  </data>
+  <data name="___ButtonStartLight__" xml:space="preserve">
+    <value>ButtonStartLight</value>
+  </data>
+  <data name="___ButtonStopLight__" xml:space="preserve">
+    <value>ButtonStopLight</value>
+  </data>
+  <data name="___ButtonGroundLight__" xml:space="preserve">
+    <value>ButtonGroundLight</value>
+  </data>
+  <data name="___ButtonAutoLight__" xml:space="preserve">
+    <value>ButtonAutoLight</value>
+  </data>
+  <data name="___Missing_link_to_Controlled_unit__No_function_is_being_executed___" xml:space="preserve">
+    <value>Missing link to Controlled unit! No function is being executed!</value>
+  </data>
+  <data name="___Missing_link_to_control_panel_components__Buttons__Mode_Keys__Normal_Service___No_function_is_being_executed___" xml:space="preserve">
+    <value>Missing link to control panel components (Buttons, Mode Keys, Normal/Service)! No function is being executed!</value>
+  </data>
+  <data name="___Air_pressure_is_not_sufficient___" xml:space="preserve">
+    <value>Air pressure is not sufficient!</value>
+  </data>
+  <data name="___Emergency_stop_active__Unlocking_doors___" xml:space="preserve">
+    <value>Emergency stop active: Unlocking doors!</value>
+  </data>
+  <data name="___Global_control_voltage_interrupted__Unlocking_doors___" xml:space="preserve">
+    <value>Global control voltage interrupted: Unlocking doors!</value>
+  </data>
+  <data name="___Local_voltage_interrupted__Unlocking_doors___" xml:space="preserve">
+    <value>Local voltage interrupted: Unlocking doors!</value>
+  </data>
+  <data name="___Ground_task__" xml:space="preserve">
+    <value>Ground task</value>
+  </data>
+  <data name="___Automat_task__" xml:space="preserve">
+    <value>Automat task</value>
+  </data>
+  <data name="___Recover_task__" xml:space="preserve">
+    <value>Recover task</value>
+  </data>
+  <data name="___Suspend_task__" xml:space="preserve">
+    <value>Suspend task</value>
+  </data>
+  <data name="___Key_Auto_task__" xml:space="preserve">
+    <value>Key Auto task</value>
+  </data>
+  <data name="___Key_Manual_task__" xml:space="preserve">
+    <value>Key Manual task</value>
+  </data>
+  <data name="___Key_Step_task__" xml:space="preserve">
+    <value>Key Step task</value>
+  </data>
+  <data name="___Key_service_task__" xml:space="preserve">
+    <value>Key service task</value>
+  </data>
+  <data name="___Automat_mode_has_been_invoked___" xml:space="preserve">
+    <value>Automat mode has been invoked.</value>
+  </data>
+  <data name="___Mode_keys_are_not_in_correct_position___" xml:space="preserve">
+    <value>Mode keys are not in correct position.</value>
+  </data>
+  <data name="___Automat_mode_has_been_done___" xml:space="preserve">
+    <value>Automat mode has been done.</value>
+  </data>
+  <data name="___Grounding_mode_has_been_invoked___" xml:space="preserve">
+    <value>Grounding mode has been invoked.</value>
+  </data>
+  <data name="___Grounding_mode_has_been_done___" xml:space="preserve">
+    <value>Grounding mode has been done.</value>
+  </data>
+  <data name="___Waiting_to_release_recover_button__" xml:space="preserve">
+    <value>Waiting to release recover button</value>
+  </data>
+  <data name="___Check_general_condition_to_recover_zone__ControlVoltage__EStops__Presure_______" xml:space="preserve">
+    <value>Check general condition to recover zone (ControlVoltage, EStops, Presure...)!</value>
+  </data>
+  <data name="___Waiting_to_close_and_lock__all_doors___" xml:space="preserve">
+    <value>Waiting to close and lock  all doors!</value>
+  </data>
+  <data name="___Invoke_restore_sequences_on_each_stations___" xml:space="preserve">
+    <value>Invoke restore sequences on each stations.</value>
+  </data>
+  <data name="___Setup_Cyclic_or_Step_mode__It_depends_on_key_position__" xml:space="preserve">
+    <value>Setup Cyclic or Step mode. It depends on key position</value>
+  </data>
+  <data name="___Recover_task_has_been_done___" xml:space="preserve">
+    <value>Recover task has been done.</value>
+  </data>
+  <data name="___Waiting_to_release_suspend_button__" xml:space="preserve">
+    <value>Waiting to release suspend button</value>
+  </data>
+  <data name="___Check_general_condition_to_suspned_zone__ControlVoltage_EStops_Presure_______" xml:space="preserve">
+    <value>Check general condition to suspned zone (ControlVoltage,EStops,Presure...)!</value>
+  </data>
+  <data name="___Force_step_mode___" xml:space="preserve">
+    <value>Force step mode.</value>
+  </data>
+  <data name="___Invoke_suspend_sequences_on_each_stations___" xml:space="preserve">
+    <value>Invoke suspend sequences on each stations.</value>
+  </data>
+  <data name="___Waiting_to_unlock__all_doors___" xml:space="preserve">
+    <value>Waiting to unlock  all doors!</value>
+  </data>
+  <data name="___Suspend_task_has_been_done___" xml:space="preserve">
+    <value>Suspend task has been done.</value>
+  </data>
+  <data name="___Automatic_mode_is_not_possibe_to_set_All_keys_must_be_in_NORMAL_and_AUTO____" xml:space="preserve">
+    <value>Automatic mode is not possibe to set(All keys must be in NORMAL and AUTO!)</value>
+  </data>
+  <data name="___Automatic_mode_is_set_Step_mode_is_disabled____" xml:space="preserve">
+    <value>Automatic mode is set(Step mode is disabled)!</value>
+  </data>
+  <data name="___Cyclic_mode_is_not_allowed_while_any_control_key_is_in_Service_mode___" xml:space="preserve">
+    <value>Cyclic mode is not allowed while any control key is in Service mode!</value>
+  </data>
+  <data name="___Setting_step_mode___" xml:space="preserve">
+    <value>Setting step mode!</value>
+  </data>
+  <data name="___Manual_mode_is_not_possibe_to_set_At_least_one_SERVICE_and_one_MANUAL_keys_must_be_in_position____" xml:space="preserve">
+    <value>Manual mode is not possibe to set(At least one SERVICE and one MANUAL keys must be in position!)</value>
+  </data>
+  <data name="___Manual_mode_is_starting__" xml:space="preserve">
+    <value>Manual mode is starting</value>
+  </data>
+  <data name="___Clear_step_mode__" xml:space="preserve">
+    <value>Clear step mode</value>
+  </data>
+  <data name="___Manual_mode_is_starting_due_service_key_combination__Manual___Service___" xml:space="preserve">
+    <value>Manual mode is starting due service key combination (Manual / Service)</value>
+  </data>
+  <data name="___Step_mode_is_required_because_Service_key_position_is_set___" xml:space="preserve">
+    <value>Step mode is required because Service key position is set!</value>
+  </data>
+  <data name="___Step_mode_is_required_but_mode_key_is_not_in_required_position___" xml:space="preserve">
+    <value>Step mode is required but mode key is not in required position!</value>
+  </data>
+  <data name="___Step_mode_is_set_or_all_are_inactive___" xml:space="preserve">
+    <value>Step mode is set or all are inactive!</value>
+  </data>
+  <data name="___Voltage_is_Off___" xml:space="preserve">
+    <value>Voltage is Off!</value>
+  </data>
+  <data name="___Closed__" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="___Locked__" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="___Unlocked__" xml:space="preserve">
+    <value>Unlocked</value>
+  </data>
+  <data name="___Global_votage__" xml:space="preserve">
+    <value>Global votage</value>
+  </data>
+  <data name="___Local_voltage__" xml:space="preserve">
+    <value>Local voltage</value>
+  </data>
+  <data name="___Local_Doors__" xml:space="preserve">
+    <value>Local Doors</value>
+  </data>
+  <data name="___Opened__" xml:space="preserve">
+    <value>Opened</value>
+  </data>
+  <data name="___Lock__" xml:space="preserve">
+    <value>Lock</value>
+  </data>
+  <data name="___Emergency_stop_active__" xml:space="preserve">
+    <value>Emergency stop active</value>
+  </data>
+  <data name="___KeyState1__" xml:space="preserve">
+    <value>KeyState1</value>
+  </data>
+  <data name="___KeyState2__" xml:space="preserve">
+    <value>KeyState2</value>
+  </data>
+  <data name="___Automatic__" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="___Step_mode__" xml:space="preserve">
+    <value>Step mode</value>
+  </data>
+  <data name="___Key_state__" xml:space="preserve">
+    <value>Key state</value>
+  </data>
+  <data name="___Service__" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="___Normal__" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="___Process_data_not_selected__" xml:space="preserve">
+    <value>Process data not selected</value>
+  </data>
+  <data name="___Would_you_like_to_load_default_settings___" xml:space="preserve">
+    <value>Would you like to load default settings?</value>
+  </data>
+  <data name="___Production_planer__" xml:space="preserve">
+    <value>Production planer</value>
+  </data>
+  <data name="___Production_planer_is_empty___" xml:space="preserve">
+    <value>Production planer is empty!</value>
+  </data>
+  <data name="___Production_planer_completed_required_plan___" xml:space="preserve">
+    <value>Production planer completed required plan!</value>
+  </data>
+  <data name="___START_MEASURE_CT_TRIGGER__" xml:space="preserve">
+    <value>START MEASURE CT TRIGGER</value>
+  </data>
+  <data name="___Recipe__" xml:space="preserve">
+    <value>Recipe</value>
+  </data>
+  <data name="___Qantity__" xml:space="preserve">
+    <value>Qantity</value>
+  </data>
+  <data name="___Timeout__" xml:space="preserve">
+    <value>Timeout</value>
+  </data>
+  <data name="___Exclude__" xml:space="preserve">
+    <value>Exclude</value>
+  </data>
+  <data name="___Pick_Position__" xml:space="preserve">
+    <value>Pick Position</value>
+  </data>
+  <data name="___Place__Position__" xml:space="preserve">
+    <value>Place  Position</value>
+  </data>
+  <data name="___WAITING_FOR_START__" xml:space="preserve">
+    <value>WAITING FOR START</value>
+  </data>
+  <data name="___SUSPENDING_COMPONENTS__" xml:space="preserve">
+    <value>SUSPENDING COMPONENTS</value>
+  </data>
+  <data name="___RECOVER_ANY_COMPONENTS__" xml:space="preserve">
+    <value>RECOVER ANY COMPONENTS</value>
+  </data>
+  <data name="___Start_manual_Service_mode__" xml:space="preserve">
+    <value>Start manual/Service mode</value>
+  </data>
+  <data name="___Brings_the_device_into_basic_position___" xml:space="preserve">
+    <value>Brings the device into basic position.</value>
+  </data>
+  <data name="___Starts_automatic_sequence__Before_start_you_need_to_perform_grounding_sequence___" xml:space="preserve">
+    <value>Starts automatic sequence. Before start you need to perform grounding sequence.</value>
+  </data>
+  <data name="___SUSPEND_PROCESS__" xml:space="preserve">
+    <value>SUSPEND PROCESS</value>
+  </data>
+  <data name="___Starts_suspend_sequence_of_process_automatic_ground_sequence____" xml:space="preserve">
+    <value>Starts suspend sequence of process(automatic,ground sequence).</value>
+  </data>
+  <data name="___RECOVER_PROCESS__" xml:space="preserve">
+    <value>RECOVER PROCESS</value>
+  </data>
+  <data name="___Test_positions__" xml:space="preserve">
+    <value>Test positions</value>
+  </data>
+  <data name="___Test_multi_positions__" xml:space="preserve">
+    <value>Test multi positions</value>
+  </data>
+  <data name="___AUTOMAT_ALL__" xml:space="preserve">
+    <value>AUTOMAT ALL</value>
+  </data>
+  <data name="___GROUND_ALL__" xml:space="preserve">
+    <value>GROUND ALL</value>
+  </data>
+  <data name="____cu00x__" xml:space="preserve">
+    <value>_cu00x</value>
+  </data>
+  <data name="___Technology_Components__" xml:space="preserve">
+    <value>Technology Components</value>
+  </data>
+  <data name="___Pritomnost_blistra_v_presuvaci__" xml:space="preserve">
+    <value>Pritomnost blistra v presuvaci</value>
+  </data>
+  <data name="___Pritomnost_medzery_medzi_blistrami__" xml:space="preserve">
+    <value>Pritomnost medzery medzi blistrami</value>
+  </data>
+  <data name="___Zasobik_blistrov_prazdny__" xml:space="preserve">
+    <value>Zasobik blistrov prazdny</value>
+  </data>
+  <data name="___Pritomnost_blistra_v_pracovnej_pozicii__" xml:space="preserve">
+    <value>Pritomnost blistra v pracovnej pozicii</value>
+  </data>
+  <data name="___Vystupny_blister_neje_v_sklzovom_dopravniku__" xml:space="preserve">
+    <value>Vystupny blister neje v sklzovom dopravniku</value>
+  </data>
+  <data name="___Vystupny_blister_snimanie_vo_vytahu__" xml:space="preserve">
+    <value>Vystupny blister snimanie vo vytahu</value>
+  </data>
+  <data name="___Vystupny_blister_je_nad_Bufferom__" xml:space="preserve">
+    <value>Vystupny blister je nad Bufferom</value>
+  </data>
+  <data name="___Vystupny_zasobnik_je_plny__" xml:space="preserve">
+    <value>Vystupny zasobnik je plny</value>
+  </data>
+  <data name="___Vertikalny_prisun_vstupnych_blistrov__" xml:space="preserve">
+    <value>Vertikalny prisun vstupnych blistrov</value>
+  </data>
+  <data name="___Horizontalny_prisun_vstupnych_blistrov__" xml:space="preserve">
+    <value>Horizontalny prisun vstupnych blistrov</value>
+  </data>
+  <data name="___Prisun_vstupneho_blistra__" xml:space="preserve">
+    <value>Prisun vstupneho blistra</value>
+  </data>
+  <data name="___Horizontalny_prisun_vystupnych_blistrov__" xml:space="preserve">
+    <value>Horizontalny prisun vystupnych blistrov</value>
+  </data>
+  <data name="___Vertikalny_prisun_vystupnych_blistrov__" xml:space="preserve">
+    <value>Vertikalny prisun vystupnych blistrov</value>
+  </data>
+  <data name="___Podopretie_vstupneho_blistra__" xml:space="preserve">
+    <value>Podopretie vstupneho blistra</value>
+  </data>
+  <data name="___Upevnenie_zboku_vstupneho_blistra__" xml:space="preserve">
+    <value>Upevnenie zboku vstupneho blistra</value>
+  </data>
+  <data name="___Zamknutue_zhora_vstupneho_blistra__" xml:space="preserve">
+    <value>Zamknutue zhora vstupneho blistra</value>
+  </data>
+  <data name="___Odelovac_blistrov_na_vstupe__" xml:space="preserve">
+    <value>Odelovac blistrov na vstupe</value>
+  </data>
+  <data name="___Signalizacia_upozornenia_R__" xml:space="preserve">
+    <value>Signalizacia upozornenia R</value>
+  </data>
+  <data name="___Signalizacia_upozornenia_G__" xml:space="preserve">
+    <value>Signalizacia upozornenia G</value>
+  </data>
+  <data name="___Signalizacia_upozornenia_B__" xml:space="preserve">
+    <value>Signalizacia upozornenia B</value>
+  </data>
+  <data name="___Stabilizacny_cas__" xml:space="preserve">
+    <value>Stabilizacny cas</value>
+  </data>
+  <data name="___Blink_period__" xml:space="preserve">
+    <value>Blink period</value>
+  </data>
+  <data name="___Zamykanie_blistra_zhora_neaktive__P9__P9_1_je_nepritomne__" xml:space="preserve">
+    <value>Zamykanie blistra zhora neaktive (P9)(P9.1)je nepritomne</value>
+  </data>
+  <data name="___Oddelovanie_blistrov_na_vstupe_neaktive__P10__P10_1_je_nepritomne__" xml:space="preserve">
+    <value>Oddelovanie blistrov na vstupe neaktive (P10)(P10.1)je nepritomne</value>
+  </data>
+  <data name="___Next_on_Passed__" xml:space="preserve">
+    <value>Next on Passed</value>
+  </data>
+  <data name="___Next_on_Failed__" xml:space="preserve">
+    <value>Next on Failed</value>
+  </data>
+  <data name="___Cycle_time__" xml:space="preserve">
+    <value>Cycle time</value>
+  </data>
+  <data name="___Clean_loop_time__" xml:space="preserve">
+    <value>Clean loop time</value>
+  </data>
+  <data name="___Operation_started__" xml:space="preserve">
+    <value>Operation started</value>
+  </data>
+  <data name="___Operation_ended__" xml:space="preserve">
+    <value>Operation ended</value>
+  </data>
+  <data name="___Operator__" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="___Nominal__" xml:space="preserve">
+    <value>Nominal</value>
+  </data>
+  <data name="___Warning__" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="___Error__" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="___Step_time__" xml:space="preserve">
+    <value>Step time</value>
+  </data>
+  <data name="___Energy_saving_mode___Inactivity_time__" xml:space="preserve">
+    <value>Energy saving mode - Inactivity time</value>
+  </data>
+  <data name="___Max_allowed_number_of_any_recurring_failures__consecutive___" xml:space="preserve">
+    <value>Max allowed number of any recurring failures (consecutive)</value>
+  </data>
+  <data name="___Max_allowed_number_of_same_recurring_failures__consecutive___" xml:space="preserve">
+    <value>Max allowed number of same recurring failures (consecutive)</value>
+  </data>
+  <data name="___Entity_header__" xml:space="preserve">
+    <value>Entity header</value>
+  </data>
+  <data name="___Recipe_created__" xml:space="preserve">
+    <value>Recipe created</value>
+  </data>
+  <data name="___Recipe_modified__" xml:space="preserve">
+    <value>Recipe modified</value>
+  </data>
+  <data name="___Carrier__" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="___Reset__" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="___Master__" xml:space="preserve">
+    <value>Master</value>
+  </data>
+  <data name="___Empty__" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="___Last_station__" xml:space="preserve">
+    <value>Last station</value>
+  </data>
+  <data name="___Next_station__" xml:space="preserve">
+    <value>Next station</value>
+  </data>
+  <data name="___Operations_opened__" xml:space="preserve">
+    <value>Operations opened</value>
+  </data>
+  <data name="___Results__" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="___Reworked__" xml:space="preserve">
+    <value>Reworked</value>
+  </data>
+  <data name="___Last_Rework_Name__" xml:space="preserve">
+    <value>Last Rework Name</value>
+  </data>
+  <data name="___Rework_Count__" xml:space="preserve">
+    <value>Rework Count</value>
+  </data>
+  <data name="___Control_voltage__" xml:space="preserve">
+    <value>Control voltage</value>
+  </data>
+  <data name="___Air_pressure__" xml:space="preserve">
+    <value>Air pressure</value>
+  </data>
+  <data name="___Autmatic_mode_allowed__" xml:space="preserve">
+    <value>Autmatic mode allowed</value>
+  </data>
+  <data name="___Emergency_stop__" xml:space="preserve">
+    <value>Emergency stop</value>
+  </data>
+  <data name="___Safety_doors_OK__" xml:space="preserve">
+    <value>Safety doors OK</value>
+  </data>
+  <data name="___Doors_closed__" xml:space="preserve">
+    <value>Doors closed</value>
+  </data>
+  <data name="___Doors_locked__" xml:space="preserve">
+    <value>Doors locked</value>
+  </data>
+  <data name="___Light_curtain__" xml:space="preserve">
+    <value>Light curtain</value>
+  </data>
+  <data name="___Process_data__" xml:space="preserve">
+    <value>Process data</value>
+  </data>
+  <data name="___Technology_data__" xml:space="preserve">
+    <value>Technology data</value>
+  </data>
+  <data name="___All__" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="___In_automatic__" xml:space="preserve">
+    <value>In automatic</value>
+  </data>
+  <data name="___Is_grounding__" xml:space="preserve">
+    <value>Is grounding</value>
+  </data>
+  <data name="___In_manual__" xml:space="preserve">
+    <value>In manual</value>
+  </data>
+  <data name="___Grounded__" xml:space="preserve">
+    <value>Grounded</value>
+  </data>
+  <data name="___In_step_mode__" xml:space="preserve">
+    <value>In step mode</value>
+  </data>
+  <data name="___Recovered__" xml:space="preserve">
+    <value>Recovered</value>
+  </data>
+  <data name="___Suspended__" xml:space="preserve">
+    <value>Suspended</value>
+  </data>
+  <data name="___Holding_process__" xml:space="preserve">
+    <value>Holding process</value>
+  </data>
+  <data name="___In_Inactive_or_Manual_or_Grounded__" xml:space="preserve">
+    <value>In Inactive or Manual or Grounded</value>
+  </data>
+  <data name="___Group__" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="___Any_station_in_automatic_mode__" xml:space="preserve">
+    <value>Any station in automatic mode</value>
+  </data>
+  <data name="___Any_station_in_manual_mode__" xml:space="preserve">
+    <value>Any station in manual mode</value>
+  </data>
+  <data name="___Any_station_in_step_mode__" xml:space="preserve">
+    <value>Any station in step mode</value>
+  </data>
+  <data name="___Any_station_is_grounding__" xml:space="preserve">
+    <value>Any station is grounding</value>
+  </data>
+  <data name="___Any_station_is_holded__" xml:space="preserve">
+    <value>Any station is holded</value>
+  </data>
+  <data name="___Control_panel__" xml:space="preserve">
+    <value>Control panel</value>
+  </data>
+  <data name="___All_keys_in_automatic__" xml:space="preserve">
+    <value>All keys in automatic</value>
+  </data>
+  <data name="___All_keys_in_normal__" xml:space="preserve">
+    <value>All keys in normal</value>
+  </data>
+  <data name="___Any_key_in_manual__" xml:space="preserve">
+    <value>Any key in manual</value>
+  </data>
+  <data name="___Any_key_in_step__" xml:space="preserve">
+    <value>Any key in step</value>
+  </data>
+  <data name="___Any_key_in_service__" xml:space="preserve">
+    <value>Any key in service</value>
+  </data>
+  <data name="___Any_button__" xml:space="preserve">
+    <value>Any button</value>
+  </data>
+  <data name="___Recover__" xml:space="preserve">
+    <value>Recover</value>
+  </data>
+  <data name="___Suspend__" xml:space="preserve">
+    <value>Suspend</value>
+  </data>
+  <data name="___Auto__" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="___Deadman__" xml:space="preserve">
+    <value>Deadman</value>
+  </data>
+  <data name="___Any_present__" xml:space="preserve">
+    <value>Any present</value>
+  </data>
+  <data name="___Average_cycle_time__" xml:space="preserve">
+    <value>Average cycle time</value>
+  </data>
+  <data name="___Average_clean_cycle_time__" xml:space="preserve">
+    <value>Average clean cycle time</value>
+  </data>
+  <data name="___Average_cycle_time_filter_constant__" xml:space="preserve">
+    <value>Average cycle time filter constant</value>
+  </data>
+  <data name="___CU00x__" xml:space="preserve">
+    <value>CU00x</value>
+  </data>
+  <data name="___MOVE_DOWN__" xml:space="preserve">
+    <value>MOVE DOWN</value>
+  </data>
+  <data name="___MOVE_UP__" xml:space="preserve">
+    <value>MOVE UP</value>
+  </data>
+  <data name="___STOP__" xml:space="preserve">
+    <value>STOP</value>
+  </data>
+  <data name="___Created__" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="___Modified__" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="___Presure_OK__" xml:space="preserve">
+    <value>Presure OK</value>
+  </data>
+  <data name="___Global_control_voltage__" xml:space="preserve">
+    <value>Global control voltage</value>
+  </data>
+  <data name="___Local_control_voltage__" xml:space="preserve">
+    <value>Local control voltage</value>
+  </data>
+  <data name="___Local_door_voltage__" xml:space="preserve">
+    <value>Local door voltage</value>
+  </data>
+  <data name="___Control_Buttons__" xml:space="preserve">
+    <value>Control Buttons</value>
+  </data>
+  <data name="___Mode_key__" xml:space="preserve">
+    <value>Mode key</value>
+  </data>
+  <data name="___Normal_Service_key__" xml:space="preserve">
+    <value>Normal/Service key</value>
+  </data>
+  <data name="___Standard_door__" xml:space="preserve">
+    <value>Standard door</value>
+  </data>
+  <data name="___Basic_door__" xml:space="preserve">
+    <value>Basic door</value>
+  </data>
+  <data name="___Door_circuit__" xml:space="preserve">
+    <value>Door circuit</value>
+  </data>
+  <data name="___Zone__" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+</root>

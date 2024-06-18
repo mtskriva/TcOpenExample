@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="View\Converters\**" />
+    <EmbeddedResource Remove="View\Converters\**" />
+    <None Remove="View\Converters\**" />
+    <Page Remove="View\Converters\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TcOpen.Inxton.RepositoryDataSet" Version="0.11.0-alpha.71" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ukazkaPlcConnector\ukazkaPlcConnector.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.sk-SK.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+</Project>

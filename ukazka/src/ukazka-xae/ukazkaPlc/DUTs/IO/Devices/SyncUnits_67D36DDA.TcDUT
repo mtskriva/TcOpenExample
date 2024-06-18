@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.2.0.0">
+  <DUT Name="SyncUnits_67D36DDA" Id="{f1e13dfd-2ee0-4017-a0c7-f1473fc5a3cc}">
+    <Declaration><![CDATA[{attribute 'GeneratedUsingTerminal: '}
+{attribute addProperty BoxType ""}
+{attribute addProperty Id "_defaultAT %I*SyncUnitTasks_4BE0146918"}
+{attribute addProperty CRC "1741909466"}
+{attribute addProperty Size "18"}
+TYPE SyncUnits_67D36DDA EXTENDS TcoIo.SyncUnitsBase_AD6C35CE :
+STRUCT
+	{attribute addProperty Name "_default"}
+	_default : SyncUnitTasks_4BE01469;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

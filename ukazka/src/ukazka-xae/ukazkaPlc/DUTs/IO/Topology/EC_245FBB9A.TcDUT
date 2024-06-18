@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.2.0.0">
+  <DUT Name="EC_245FBB9A" Id="{bd6416fa-4f80-462c-8da4-11e43e05aa35}">
+    <Declaration><![CDATA[{attribute 'GeneratedUsingTerminal: IODEVICETYPE_ETHERCATPROT'}
+{attribute addProperty BoxType "IODEVICETYPE_ETHERCATPROT"}
+{attribute addProperty Id "ECEC_4E5C738F193SyncUnitsSyncUnits_67D36DDA18InputsInputs_A65FACA410OutputsOutputs_23C0ED1D6InfoDataInfoData_84133AC922"}
+{attribute addProperty CRC "610253722"}
+{attribute addProperty Size "249"}
+{attribute addProperty Name "EC"}
+TYPE EC_245FBB9A EXTENDS TcoIo.EtcMasterBase_62654B43 :
+STRUCT
+	{attribute addProperty Name "EC"}
+	{attribute addProperty PreviousPort "EC : Master"}
+	{attribute addProperty SyncUnit "default"}
+	EC : EC_4E5C738F;
+	{attribute addProperty Name "SyncUnits"}
+	SyncUnits : SyncUnits_67D36DDA;
+	{attribute addProperty Name "Inputs"}
+	Inputs : TcoIo.Inputs_A65FACA4;
+	{attribute addProperty Name "Outputs"}
+	Outputs : TcoIo.Outputs_23C0ED1D;
+	{attribute addProperty Name "InfoData"}
+	InfoData : TcoIo.InfoData_84133AC9;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	  <TargetFrameworks>net48;net5.0</TargetFrameworks>
+    <IsPackable>false</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Localizations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Localizations.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Localizations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localizations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!--PCKG-START-->
+  <ItemGroup>
+
+    <PackageReference Include="Serilog" Version="2.11.0" />
+	  <PackageReference Include="Inxton.iXlinker" Version="0.1.4-alpha.100" />
+	  <PackageReference Include="Inxton.vortex.compiler.console" Version="2.0.0" />
+	  <PackageReference Include="TcOpen.Inxton.App" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.Local.Security" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.Data.Json" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.MongoDb" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.RavenDb" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoAimTtiPowerSupplyConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoCoreConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoDataConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoDrivesBeckhoffConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoElementsConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoInspectorsConnector" Version="0.11.0-alpha.71" />    
+    <PackageReference Include="TcOpen.TcoPneumaticsConnector" Version="0.11.0-alpha.71" />    
+    <PackageReference Include="TcOpen.TcoAbbRoboticsConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoMitsubishiRoboticsConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoRexrothPressConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoUrRoboticsConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoKukaRoboticsConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoUtilitiesConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoIoConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.Inxton.RepositoryDataSet" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoTixonFeedingConnector" Version="0.11.0-alpha.71" />
+    <PackageReference Include="TcOpen.TcoCognexVisionConnector" Version="0.11.0-alpha.71" />
+
+
+
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <!--PCKG-END-->  
+  
+  <!--PROJ-START
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoCore\src\TcoCoreConnector\TcoCoreConnector.csproj" />    
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoData\src\Repository\RavenDb\TcOpen.Inxton.RavenDb\TcOpen.Inxton.RavenDb.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoData\src\TcoDataConnector\TcoDataConnector.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoElements\src\TcoElementsConnector\TcoElementsConnector.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoInspectors\src\TcoInspectorsConnector\TcoInspectorsConnector.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\TcOpen\src\TcoPneumatics\src\TcoPneumaticsConnector\TcoPneumaticsConnector.csproj" />
+  </ItemGroup>
+  PROJ-END-->
+</Project>

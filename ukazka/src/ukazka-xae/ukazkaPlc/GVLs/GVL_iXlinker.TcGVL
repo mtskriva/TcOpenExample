@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.2.0.0">
+  <GVL Name="GVL_iXlinker" Id="{4cabe4e6-6ccc-4b92-b0d0-c1d5db34e8f9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+		EC : EC_245FBB9A;
+		IN : EL1809_32157CFD;
+		OUT : EL2809_2B6483BD;
+		{attribute addProperty Name "B10.1"} 
+		B10_1 : BOOL;
+		
+		B20_1 : BOOL;
+END_VAR
+
+// B10]]></Declaration>
+  </GVL>
+</TcPlcObject>

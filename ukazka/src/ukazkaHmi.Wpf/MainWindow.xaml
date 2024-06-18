@@ -1,0 +1,24 @@
+<Window
+    x:Class="ukazkaHmi.Wpf.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ukazkaHmi.Wpf"
+    xmlns:mainview="clr-namespace:ukazkaHmi.Wpf.Views.MainView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vortex="http://vortex.mts/xaml"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    WindowStyle="None"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d"
+    Title="x_tempalte_x">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+          <mainview:MainView/>
+   
+    </Grid>
+</Window>

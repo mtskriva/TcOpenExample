@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.2.0.0">
+  <DUT Name="AES_510494FB" Id="{d7ac09ef-2875-4f65-bbc8-bde438eb3b6d}">
+    <Declaration><![CDATA[{attribute 'GeneratedUsingTerminal: AES-D-BC-ECAT Gen2-0001'}
+{attribute addProperty VendorId "#x000001b2"}
+{attribute addProperty BoxType "AES-D-BC-ECAT Gen2-0001"}
+{attribute addProperty Description "AES Fieldbus Coupler Gen2"}
+{attribute addProperty Physics "YY"}
+{attribute addProperty Id "ModulesModules_85784B2764Device_StateAT %I*Device_State_F0482DC316Device_ControlAT %Q*Device_Control_6258066A4WcStateAT %I*WcState_9091E0EB2InfoDataAT %I*InfoData_23CBA8372"}
+{attribute addProperty CRC "1359254779"}
+{attribute addProperty Size "88"}
+TYPE AES_510494FB EXTENDS TcoIo.EtcSlaveBoxBase_77A0E4A7 :
+STRUCT
+	{attribute addProperty Name "Modules"}
+	Modules : Modules_85784B27;
+	{attribute addProperty Name "Device_State"}
+	Device_State : Device_State_F0482DC3;
+	{attribute addProperty Name "Device_Control"}
+	Device_Control : Device_Control_6258066A;
+	{attribute addProperty Name "WcState"}
+	WcState : TcoIo.WcState_9091E0EB;
+	{attribute addProperty Name "InfoData"}
+	InfoData : TcoIo.InfoData_23CBA837;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
