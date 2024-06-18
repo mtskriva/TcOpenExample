@@ -57,10 +57,10 @@ namespace ukazkaHmi.Wpf
 
         public App()
         {
-          
+
             SetCulture();
 
-           
+
 
             const string SetId = "default";
             Entry.LoadAppSettings(SetId, RepositoryEntry.IsDebug());
@@ -79,7 +79,7 @@ namespace ukazkaHmi.Wpf
             StopIfRunning();
 
 
-           
+
 
             // This starts the twin connector operations
             ukazkaPlc.Connector.BuildAndStart().ReadWriteCycleDelay = Entry.Settings.ReadWriteCycleDelay;
@@ -107,21 +107,43 @@ namespace ukazkaHmi.Wpf
                         .SetSecurity(SecurityManager.Manager.Service)
                         .SetEditValueChangeLogging(Entry.Plc.Connector)
                         .SetLogin(() => { var login = new LoginWindow(); login.ShowDialog(); })
-                        .SetPlcDialogs(DialogProxyServiceWpf.Create(new IVortexObject[]{ ukazkaPlc.MAIN._technology._cu00x._processData, ukazkaPlc.MAIN._technology._cu00x._groupInspection, ukazkaPlc.MAIN._technology._cu00x._automatTask, ukazkaPlc.MAIN._technology._cu00x._groundTask }));
+                        .SetPlcDialogs(DialogProxyServiceWpf.Create(new IVortexObject[] { ukazkaPlc.MAIN._technology._cu00x._processData, ukazkaPlc.MAIN._technology._cu00x._groupInspection, ukazkaPlc.MAIN._technology._cu00x._automatTask, ukazkaPlc.MAIN._technology._cu00x._groundTask }));
 
 
 
                     break;
                 case DatabaseEngine.MongoDb:
-                    
-                    
-                    //TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>("Starting DB server...");
 
-                    
+
+                    LoggerConfiguration LogConfig = new LoggerConfiguration()
+                                                .WriteTo.Console()
+                                                .WriteTo.File(new Serilog.Formatting.Compact.RenderedCompactJsonFormatter(), "logs\\logs.log")
+                                                .Enrich.WithEnvironmentName()
+                                                .Enrich.WithEnvironmentUserName()
+                                                .Enrich.WithEnrichedProperties();
+
+                    // TcOpen app setup
+                    TcOpen.Inxton.TcoAppDomain.Current.Builder
+                        .SetUpLogger(new TcOpen.Inxton.Logging.SerilogAdapter(LogConfig));
+
+
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...");
+                    StartMongoDbServer(Entry.Settings.MongoPath, Entry.Settings.MongoArgs, Entry.Settings.MongoDbRun);
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...done");
+
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...");
+                    CheckDatabaseAccessibility(Entry.Settings.GetConnectionString());
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...done");
+
+
                     RepositoryEntry.CreateSecurityManageUsingMongoDb(true, true);
                     SetUpRepositoriesUsingMongoDb();
                     CuxTagsPairing = new TagsPairingController(RepositoryDataSetHandler<TagItem>.CreateSet(new MongoDbRepository<EntitySet<TagItem>>(new MongoDbRepositorySettings<EntitySet<TagItem>>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "TagsDictionary"))), "TagsCfg");
 
+
+                    LogConfig.WriteTo.MongoDBBson($@"{Entry.Settings.GetConnectionString()}/{Entry.Settings.DbName}", "log",
+                                                                     Entry.Settings.LogRestrictedToMiniummLevel, 50, TimeSpan.FromSeconds(1), Entry.Settings.CappedMaxSizeMb, Entry.Settings.CappedMaxDocuments)
+                                                                    .MinimumLevel.Information();
 
                     // TcOpen app setup
                     TcOpen.Inxton.TcoAppDomain.Current.Builder
@@ -140,15 +162,6 @@ namespace ukazkaHmi.Wpf
                         .SetLogin(() => { var login = new LoginWindow(); login.ShowDialog(); })
                         .SetPlcDialogs(DialogProxyServiceWpf.Create(new IVortexObject[] { ukazkaPlc.MAIN._technology._cu00x._processData, ukazkaPlc.MAIN._technology._cu00x._groupInspection, ukazkaPlc.MAIN._technology._cu00x._automatTask, ukazkaPlc.MAIN._technology._cu00x._groundTask }));
 
-          
-
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...");
-                    StartMongoDbServer(Entry.Settings.MongoPath, Entry.Settings.MongoArgs, Entry.Settings.MongoDbRun);
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...done");
-
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...");
-                    CheckDatabaseAccessibility(Entry.Settings.GetConnectionString());
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...done");
 
 
                     break;
@@ -157,7 +170,7 @@ namespace ukazkaHmi.Wpf
             }
 
 
-         
+
 
             // Otherwise undocumented feature in official IVF, for details refer to internal documentation.
             LazyRenderer.Get.CreateSecureContainer = (permissions) => new PermissionBox { Permissions = permissions, SecurityMode = SecurityModeEnum.Invisible };
@@ -178,33 +191,33 @@ namespace ukazkaHmi.Wpf
 
 
             // Authenticates default user, change this line if you need to authenticate different user.
-         
+
             Console.WriteLine(Entry.Settings.AutologinUserName.ToString());
             Console.WriteLine(Entry.Settings.AutologinUserPassword);
-           SecurityManager.Manager.Service.AuthenticateUser(Entry.Settings.AutologinUserName, Entry.Settings.AutologinUserPassword);
+            SecurityManager.Manager.Service.AuthenticateUser(Entry.Settings.AutologinUserName, Entry.Settings.AutologinUserPassword);
 
 
 
-           
-            
 
 
 
-            
 
-     
+
+
+
+
 
 
         }
         // this is usage, should be placed in remote exec
 
-    
+
 
         /// <summary>
         /// this is remontely invoked from plc , 
         /// </summary>
         /// <param name="pairTagTask"></param>
-       
+
 
         private static void SetCulture()
         {
@@ -220,7 +233,7 @@ namespace ukazkaHmi.Wpf
 
         private static void GeAssembliesVersion(string contains)
         {
-    
+
 
             Assembly
             .GetExecutingAssembly()
@@ -304,7 +317,7 @@ namespace ukazkaHmi.Wpf
         }
 
         private static void SetUpExternalAuthenticationDevice()
-        {            
+        {
             try
             {
                 SecurityManager.Manager.Service.ExternalAuthorization = TcOpen.Inxton.Local.Security.Readers.ExternalTokenAuthorization.CreateComReader("COM3");
@@ -367,7 +380,7 @@ namespace ukazkaHmi.Wpf
 
             // EmbeddedServer.Instance.OpenStudioInBrowser();
         }
-      
+
 
         private void SetUpRepositoriesUsingRavenDb()
         {
@@ -378,7 +391,7 @@ namespace ukazkaHmi.Wpf
             RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._technologySettings, new RavenDbRepository<PlainTechnologyData>(TechnologicalDataRepoSettings), DataExchangeActive);
 
             var ReworklDataRepoSettings = new RavenDbRepositorySettings<PlainProcessData>(new string[] { Entry.Settings.GetConnectionString() }, "ReworkSettings", "", "");
-            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._reworkSettings, new RavenDbRepository<PlainProcessData>(ReworklDataRepoSettings), DataExchangeActive) ;
+            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._reworkSettings, new RavenDbRepository<PlainProcessData>(ReworklDataRepoSettings), DataExchangeActive);
 
             //Statistics
             var _statisticsDataHandler = RepositoryDataSetHandler<StatisticsDataItem>.CreateSet(new RavenDbRepository<EntitySet<StatisticsDataItem>>(new RavenDbRepositorySettings<EntitySet<StatisticsDataItem>>(new string[] { Entry.Settings.GetConnectionString() }, "Statistics", "", "")));
@@ -390,8 +403,8 @@ namespace ukazkaHmi.Wpf
 
 
             var Traceability = new RavenDbRepositorySettings<PlainProcessData>(new string[] { Entry.Settings.GetConnectionString() }, "Traceability", "", "");
-            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._processTraceability, new RavenDbRepository<PlainProcessData>(Traceability),false);
-            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._cu00x._processData, new RavenDbRepository<PlainProcessData>(Traceability),DataExchangeActive);
+            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._processTraceability, new RavenDbRepository<PlainProcessData>(Traceability), false);
+            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._cu00x._processData, new RavenDbRepository<PlainProcessData>(Traceability), DataExchangeActive);
 
             //count data
             //count data
@@ -419,7 +432,7 @@ namespace ukazkaHmi.Wpf
 
 
         }
-   
+
 
         private void SetUpRepositoriesUsingMongoDb()
         {
@@ -438,16 +451,16 @@ namespace ukazkaHmi.Wpf
             var _statisticsConfigHandler = RepositoryDataSetHandler<StatisticsConfig>.CreateSet(new MongoDbRepository<EntitySet<StatisticsConfig>>(new MongoDbRepositorySettings<EntitySet<StatisticsConfig>>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "StatisticsConfig")));
 
 
-            CuxStatistic = new StatisticsDataController(ukazkaPlc.MAIN._technology._cu00x.AttributeShortName,_statisticsDataHandler,_statisticsConfigHandler);
+            CuxStatistic = new StatisticsDataController(ukazkaPlc.MAIN._technology._cu00x.AttributeShortName, _statisticsDataHandler, _statisticsConfigHandler);
 
 
 
             var Traceability = new MongoDbRepositorySettings<PlainProcessData>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "Traceability");
-            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._processTraceability, new MongoDbRepository<PlainProcessData>(Traceability),false);
+            RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._processTraceability, new MongoDbRepository<PlainProcessData>(Traceability), false);
             RepositoryEntry.InitializeRepository(ukazkaPlc.MAIN._technology._cu00x._processData, new MongoDbRepository<PlainProcessData>(Traceability), DataExchangeActive);
 
             //count data
-            new MongoDbRepository<PlainProcessData>(Traceability).OnUpdateDone = (id, data) => {CuxStatistic.Count(data); };
+            new MongoDbRepository<PlainProcessData>(Traceability).OnUpdateDone = (id, data) => { CuxStatistic.Count(data); };
 
             RepositoryEntry.InitializeIndexProcessDataRepositoryMongoDb(Traceability);
 
@@ -460,15 +473,15 @@ namespace ukazkaHmi.Wpf
 
             Action prodPlan = () => GetProductionPlan(ukazkaPlc.MAIN._technology._cu00x._productionPlaner);
             ukazkaPlc.MAIN._technology._cu00x._productionPlaner.InitializeExclusively(prodPlan);
-            
+
             //Instructors
-            var _instructionPlanHandler= RepositoryDataSetHandler<InstructionItem>.CreateSet(new MongoDbRepository<EntitySet<InstructionItem>>(new MongoDbRepositorySettings<EntitySet<InstructionItem>>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "Instructions")));
-         
+            var _instructionPlanHandler = RepositoryDataSetHandler<InstructionItem>.CreateSet(new MongoDbRepository<EntitySet<InstructionItem>>(new MongoDbRepositorySettings<EntitySet<InstructionItem>>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "Instructions")));
+
             CuxInstructor = new InstructorController(_instructionPlanHandler, new InstructableSequencer(ukazkaPlc.MAIN._technology._cu00x._automatTask));
             CuxParalellInstructor = new InstructorController(_instructionPlanHandler, new InstructableSequencer(ukazkaPlc.MAIN._technology._cu00x._automatTask._paralellTask));
 
 
-          
+
         }
 
         private void GetProductionPlan(ProductionPlaner productionPlaner)
@@ -484,16 +497,16 @@ namespace ukazkaHmi.Wpf
 
         }
 
-     
+
 
         /// <summary>
         /// Gets the twin connector for this application.
         /// </summary>
-        public static ukazkaPlcTwinController ukazkaPlc 
-        {  
+        public static ukazkaPlcTwinController ukazkaPlc
+        {
             get
             {
-                return designTime ? Entry.PlcDesign : Entry.Plc;                
+                return designTime ? Entry.PlcDesign : Entry.Plc;
             }
         }
 
@@ -514,7 +527,7 @@ namespace ukazkaHmi.Wpf
         /// </summary>
         private static bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
 
-  
+
         /// <summary>
         /// Checks that no other instance of this program is running on this system.
         /// </summary>
