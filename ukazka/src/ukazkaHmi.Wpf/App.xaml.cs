@@ -114,36 +114,19 @@ namespace ukazkaHmi.Wpf
                     break;
                 case DatabaseEngine.MongoDb:
 
-
-                    LoggerConfiguration LogConfig = new LoggerConfiguration()
-                                                .WriteTo.Console()
-                                                .WriteTo.File(new Serilog.Formatting.Compact.RenderedCompactJsonFormatter(), "logs\\logs.log")
-                                                .Enrich.WithEnvironmentName()
-                                                .Enrich.WithEnvironmentUserName()
-                                                .Enrich.WithEnrichedProperties();
-
-                    // TcOpen app setup
-                    TcOpen.Inxton.TcoAppDomain.Current.Builder
-                        .SetUpLogger(new TcOpen.Inxton.Logging.SerilogAdapter(LogConfig));
-
-
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...");
+           
+                    Console.WriteLine("Starting DB server...");
                     StartMongoDbServer(Entry.Settings.MongoPath, Entry.Settings.MongoArgs, Entry.Settings.MongoDbRun);
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...done");
+                    Console.WriteLine("Starting DB server...done");
 
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...");
+                    Console.WriteLine("Checking database server...");
                     CheckDatabaseAccessibility(Entry.Settings.GetConnectionString());
-                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...done");
+                    Console.WriteLine($"Checking database server...done");
 
 
                     RepositoryEntry.CreateSecurityManageUsingMongoDb(true, true);
                     SetUpRepositoriesUsingMongoDb();
                     CuxTagsPairing = new TagsPairingController(RepositoryDataSetHandler<TagItem>.CreateSet(new MongoDbRepository<EntitySet<TagItem>>(new MongoDbRepositorySettings<EntitySet<TagItem>>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "TagsDictionary"))), "TagsCfg");
-
-
-                    LogConfig.WriteTo.MongoDBBson($@"{Entry.Settings.GetConnectionString()}/{Entry.Settings.DbName}", "log",
-                                                                     Entry.Settings.LogRestrictedToMiniummLevel, 50, TimeSpan.FromSeconds(1), Entry.Settings.CappedMaxSizeMb, Entry.Settings.CappedMaxDocuments)
-                                                                    .MinimumLevel.Information();
 
                     // TcOpen app setup
                     TcOpen.Inxton.TcoAppDomain.Current.Builder
@@ -161,6 +144,8 @@ namespace ukazkaHmi.Wpf
                         .SetEditValueChangeLogging(Entry.Plc.Connector)
                         .SetLogin(() => { var login = new LoginWindow(); login.ShowDialog(); })
                         .SetPlcDialogs(DialogProxyServiceWpf.Create(new IVortexObject[] { ukazkaPlc.MAIN._technology._cu00x._processData, ukazkaPlc.MAIN._technology._cu00x._groupInspection, ukazkaPlc.MAIN._technology._cu00x._automatTask, ukazkaPlc.MAIN._technology._cu00x._groundTask }));
+
+
 
 
 
