@@ -18,7 +18,7 @@ namespace ukazkaPlcConnector
 
         public string DbName { get; set; } = "tcomtsukazka";
         public string MongoPath {get;set;} = @"C:\Program Files\MongoDB\Server\7.0\bin\mongod.exe";
-        public string MongoArgs { get; set; } = "--dbpath C:\\DATA\\DB\\ --bind_ip_all";
+        public string MongoArgs { get; set; } = "--dbpath C:\\DATA\\DB7\\ --bind_ip_all";
         public bool MongoDbRun { get; set; } = true;
         private string MongoDbLocal { get; set; } = @"mongodb://localhost:27017";
         private string MongoDbProduction { get; set; } = @"mongodb://localhost:27017";

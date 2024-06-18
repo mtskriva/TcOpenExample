@@ -34,6 +34,9 @@ using Vortex.Connector;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using Newtonsoft.Json;
+using MongoDB.Driver.Core.Configuration;
+using System.Net;
+using System.Net.Sockets;
 
 namespace ukazkaHmi.Wpf
 {
@@ -110,7 +113,13 @@ namespace ukazkaHmi.Wpf
 
                     break;
                 case DatabaseEngine.MongoDb:
+                    //TcOpen.Inxton.TcoAppDomain.Current.Logger.Information("Authentication device was not properly initialized");
+                    Console.WriteLine("Starting DB server...");
                     StartMongoDbServer(Entry.Settings.MongoPath, Entry.Settings.MongoArgs, Entry.Settings.MongoDbRun);
+                    Console.WriteLine("Starting DB server...done");
+                    Console.WriteLine("Checking database server...");
+                    CheckDatabaseAccessibility(Entry.Settings.GetConnectionString());
+                    Console.WriteLine("Checking database server...done");
                     RepositoryEntry.CreateSecurityManageUsingMongoDb(true, true);
                     SetUpRepositoriesUsingMongoDb();
                     CuxTagsPairing = new TagsPairingController(RepositoryDataSetHandler<TagItem>.CreateSet(new MongoDbRepository<EntitySet<TagItem>>(new MongoDbRepositorySettings<EntitySet<TagItem>>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "TagsDictionary"))), "TagsCfg");
@@ -220,6 +229,73 @@ namespace ukazkaHmi.Wpf
             });
         }
 
+        public static void CheckDatabaseAccessibility(string connectionString)
+        {
+            ConnectionString mongoStr = new ConnectionString(connectionString);
+
+            string host = "";
+            int port = 0;
+
+            try
+            {
+                IPEndPoint endPoint = (IPEndPoint)mongoStr.Hosts.First();
+                host = endPoint.Address.ToString();
+                port = endPoint.Port;
+            }
+            catch
+            {
+                //localhost, dns name
+                DnsEndPoint endPoint = (DnsEndPoint)mongoStr.Hosts.First();
+                host = endPoint.Host;
+                port = endPoint.Port;
+            }
+
+            while (true)
+            {
+                //Console.WriteLine("[" + DateTime.Now.ToString("HH:mm:ss") + " INF] Checking database server '" + host + "'...");
+                if (IsPortOpen(host, port, new TimeSpan(5000)))
+                {
+                    break;
+                }
+                else
+                {
+                    Thread.Sleep(2000);
+                }
+            }
+
+            //Console.WriteLine("[" + DateTime.Now.ToString("HH:mm:ss") + " INF] Checking database server '" + host + "'... Done");
+        }
+
+        private static bool IsPortOpen(string host, int port, TimeSpan timeout)
+        {
+            try
+            {
+                //using (var client = new TcpClient())
+                //{
+                //    var result = client.BeginConnect(host, port, null, null);
+                //    var success = result.AsyncWaitHandle.WaitOne(timeout);
+                //    if (!success)
+                //    {
+                //        return false;
+                //    }
+
+                //    client.EndConnect(result);
+                //}
+
+                using (var tcpClient = new TcpClient())
+                {
+                    tcpClient.Connect(host, port);
+                    tcpClient.Client.Disconnect(false);
+                    tcpClient.Dispose();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         private static void SetUpExternalAuthenticationDevice()
         {            

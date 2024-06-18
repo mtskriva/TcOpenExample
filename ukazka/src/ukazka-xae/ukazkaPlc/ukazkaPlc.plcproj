@@ -486,11 +486,64 @@
       <SubType>Content</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="TcoAbbRobotics">
+      <Resolution>TcoAbbRobotics, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoAbstractions">
+      <Resolution>TcoAbstractions, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoAimTtiPowerSupply">
+      <Resolution>TcoAimTtiPowerSupply, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoCognexVision">
+      <Resolution>TcoCognexVision, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoCore">
+      <Resolution>TcoCore, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoData">
+      <Resolution>TcoData, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoDrivesBeckhoff">
+      <Resolution>TcoDrivesBeckhoff, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoElements">
+      <Resolution>TcoElements, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoInspectors">
+      <Resolution>TcoInspectors, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoIo">
+      <Resolution>TcoIo, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoKukaRobotics">
+      <Resolution>TcoKukaRobotics, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoMitsubishiRobotics">
+      <Resolution>TcoMitsubishiRobotics, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoPneumatics">
+      <Resolution>TcoPneumatics, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoRexrothPress">
+      <Resolution>TcoRexrothPress, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoTixonFeeding">
+      <Resolution>TcoTixonFeeding, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoUrRobotics">
+      <Resolution>TcoUrRobotics, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcoUtilities">
+      <Resolution>TcoUtilities, 0.11.0.71 (Vortex.Library)</Resolution>
+    </PlaceholderResolution>
+  </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -539,14 +592,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Boolean">System.Boolean</Type>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Boolean">System.Boolean</Type>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>
