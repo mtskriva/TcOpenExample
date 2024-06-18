@@ -113,13 +113,11 @@ namespace ukazkaHmi.Wpf
 
                     break;
                 case DatabaseEngine.MongoDb:
-                    //TcOpen.Inxton.TcoAppDomain.Current.Logger.Information("Authentication device was not properly initialized");
-                    Console.WriteLine("Starting DB server...");
-                    StartMongoDbServer(Entry.Settings.MongoPath, Entry.Settings.MongoArgs, Entry.Settings.MongoDbRun);
-                    Console.WriteLine("Starting DB server...done");
-                    Console.WriteLine("Checking database server...");
-                    CheckDatabaseAccessibility(Entry.Settings.GetConnectionString());
-                    Console.WriteLine("Checking database server...done");
+                    
+                    
+                    //TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>("Starting DB server...");
+
+                    
                     RepositoryEntry.CreateSecurityManageUsingMongoDb(true, true);
                     SetUpRepositoriesUsingMongoDb();
                     CuxTagsPairing = new TagsPairingController(RepositoryDataSetHandler<TagItem>.CreateSet(new MongoDbRepository<EntitySet<TagItem>>(new MongoDbRepositorySettings<EntitySet<TagItem>>(Entry.Settings.GetConnectionString(), Entry.Settings.DbName, "TagsDictionary"))), "TagsCfg");
@@ -142,7 +140,15 @@ namespace ukazkaHmi.Wpf
                         .SetLogin(() => { var login = new LoginWindow(); login.ShowDialog(); })
                         .SetPlcDialogs(DialogProxyServiceWpf.Create(new IVortexObject[] { ukazkaPlc.MAIN._technology._cu00x._processData, ukazkaPlc.MAIN._technology._cu00x._groupInspection, ukazkaPlc.MAIN._technology._cu00x._automatTask, ukazkaPlc.MAIN._technology._cu00x._groundTask }));
 
+          
 
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...");
+                    StartMongoDbServer(Entry.Settings.MongoPath, Entry.Settings.MongoArgs, Entry.Settings.MongoDbRun);
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Starting DB server...done");
+
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...");
+                    CheckDatabaseAccessibility(Entry.Settings.GetConnectionString());
+                    TcOpen.Inxton.TcoAppDomain.Current.Logger.Information<string>($"Checking database server...done");
 
 
                     break;

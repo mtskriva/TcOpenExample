@@ -1,15 +1,6 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.42">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.5">
 	<DataTypes>
-		<DataType>
-			<Name GUID="{2D719C9F-A498-98FF-B45A-B1CD9E59A10A}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..31] OF USINT</Name>
-			<BitSize>256</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000002}">USINT</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>32</Elements>
-			</ArrayInfo>
-		</DataType>
 		<DataType>
 			<Name GUID="{132E66EA-9D48-518D-E919-C407F4B9DB22}" Namespace="TcoIo" AutoDeleteType="true">TcoAmsNetId</Name>
 			<BitSize>48</BitSize>
@@ -23,6 +14,15 @@
 				<BitSize>48</BitSize>
 				<BitOffs>0</BitOffs>
 			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{2D719C9F-A498-98FF-B45A-B1CD9E59A10A}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..31] OF USINT</Name>
+			<BitSize>256</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000002}">USINT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>32</Elements>
+			</ArrayInfo>
 		</DataType>
 		<DataType>
 			<Name GUID="{A785EC7B-AB96-8684-F3EC-9323F60B420C}" Namespace="TcoIo" AutoDeleteType="true">TcoAmsAddr</Name>
@@ -151,7 +151,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{1F826822-78EF-46D2-B0C2-A803A090596D}" Name="ukazkaPlc" PrjFilePath="ukazkaPlc\ukazkaPlc.plcproj" TmcFilePath="ukazkaPlc\ukazkaPlc.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="ukazkaPlc\ukazkaPlc.tmc" TmcHash="{2A7B4EC5-ED2B-8B22-8C0B-1D7CBF79B4EF}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{0F402D7C-0ED9-9122-EE34-1B8D5C1C38A5}" TmcPath="ukazkaPlc\ukazkaPlc.tmc">
 					<Name>ukazkaPlc Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
